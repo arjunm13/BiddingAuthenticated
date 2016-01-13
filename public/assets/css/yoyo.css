@@ -1,0 +1,14 @@
+.jumbotron{
+	background-color: #2E2D88;
+	color:white;
+}
+.tab content {
+border-left: 10px solid #ddd;
+border-right: 10px solid #ddd;
+border-bottom: 10px solid #ddd;
+padding: 100px;
+
+}
+.nav-tabs (
+margin-bottom: 0;
+	)
