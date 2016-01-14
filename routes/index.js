@@ -9,13 +9,17 @@ var isAuthenticated = function (req, res, next) {
 	if (req.isAuthenticated())
 		return next();
 	// if the user is not authenticated then redirect him to the login page
-	res.render('loginError');
+	res.render('zillow');
 }
 
 	/* GET login page. */
-	router.get('/', isAuthenticated,function(req, res) {
+	router.get('/test2', isAuthenticated,function(req, res) {
     	// Display the Login page with any flash message, if any
 		res.render('users', { message: req.flash('message') });
+	});
+router.get('/test', function(req, res) {
+    	// Display the Login page with any flash message, if any
+		res.render('loginError');
 	});
 
 module.exports = router;

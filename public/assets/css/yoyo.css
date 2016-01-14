@@ -1,6 +1,19 @@
+body {
+   height: 500px;width: 100%;
+   font-family:verdana,arial,sans-serif;
+   color:#555555;
+}
+#title{
+	text-align:center;	
+	color:white;
+}
+
+
+
 .jumbotron{
 	background-color: #2E2D88;
 	color:white;
+	text-align:center;
 }
 .tab content {
 border-left: 10px solid #ddd;
@@ -12,3 +25,4 @@ padding: 100px;
 .nav-tabs (
 margin-bottom: 0;
 	)
+
