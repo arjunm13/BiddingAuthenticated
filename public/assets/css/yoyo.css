@@ -26,3 +26,9 @@ padding: 100px;
 margin-bottom: 0;
 	)
 
+.container-fluid{
+	position:relative;
+	text-align:center;
+    margin-left:10%;
+	padding-top:30%;
+}
