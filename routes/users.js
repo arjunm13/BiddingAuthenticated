@@ -8,21 +8,27 @@ var isAuthenticated = function (req, res, next) {
 	if (req.isAuthenticated())
 		return next();
 	// if the user is not authenticated then redirect him to the login page
-	res.redirect('/zillow.ejs');
+	res.redirect('loginError');
 }
 
 module.exports = function(passport){
 
 	/* GET login page. */
-	router.get('/', function(req, res) {
+	router.get('/loginPage', function(req, res) {
+
+		if (req.user) {
+    	res.redirect('/homes/homelist');
+		} else {
+    res.render('login', { message: req.flash('message') });
+		}
     	// Display the Login page with any flash message, if any
-		res.render('users', { message: req.flash('message') });
+		
 	});
 
 	/* Handle Login POST */
 	router.post('/login', passport.authenticate('login', {
-		successRedirect: '/users/home',
-		failureRedirect: '/users',
+		successRedirect: '/users/show',
+		failureRedirect: '/users/loginPage',
 		failureFlash : true  
 	}));
 
@@ -33,20 +39,20 @@ module.exports = function(passport){
 
 	/* Handle Registration POST */
 	router.post('/signup', passport.authenticate('signup', {
-		successRedirect: '/home',
-		failureRedirect: 'users/signup',
+		successRedirect: '/users/show',
+		failureRedirect: '/signup',
 		failureFlash : true  
 	}));
 
 	/* GET Home Page */
-	router.get('/home', isAuthenticated, function(req, res){
-		res.render('home', { user: req.user });
+	router.get('/show', isAuthenticated, function(req, res){
+		res.render('showUser', { user: req.user });
 	});
 
 	/* Handle Logout */
 	router.get('/signout', function(req, res) {
 		req.logout();
-		res.redirect('/');
+		res.redirect('/users/loginPage');
 	});
 
 	return router;

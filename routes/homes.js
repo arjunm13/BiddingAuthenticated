@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var Home = require('../models/home');
 var passport = require('passport');
 
 var isAuthenticated = function (req, res, next) {
@@ -13,9 +14,52 @@ var isAuthenticated = function (req, res, next) {
 }
 
 	/* GET login page. */
-	router.get('/', isAuthenticated,function(req, res) {
+	router.get('/', isAuthenticated ,function(req, res) {
     	// Display the Login page with any flash message, if any
 		res.render('homes', { message: req.flash('message') });
 	});
+
+		/* GET login page. */
+	router.get('/new', isAuthenticated, function(req, res) {
+    	// Display the Login page with any flash message, if any
+		res.render('newHome');
+	});
+
+			/* GET login page. */
+	router.post('/new', isAuthenticated, function(req, res) {
+    	var newHome = new Home();
+
+        // set the user's local credentials
+      	newHome.userid = req.user._id;
+        newHome.address = req.param('address');        
+        newHome.price = req.param('price');
+        newHome.squareFoot = req.param('squareFoot');
+        newHome.rooms = req.param('rooms');
+
+        newHome.save(function (err, newHome) {
+   		 if (err) { return next(err) }
+   		 //res.json(201, newHome);
+   		 res.redirect('/homes/homelist');
+   		});
+
+	});
+
+		/* GET login page. */
+	router.get('/homelist', isAuthenticated, function(req, res) {
+
+		Home.find({}, function(err, homes) {
+   			 var homeMap = [];
+
+    		homes.forEach(function(home) {
+      			homeMap.push(home);
+    		});
+
+    		res.render('homelist',{homes: homeMap} );
+
+
+  		});
+		});
+
+
 
 module.exports = router;
