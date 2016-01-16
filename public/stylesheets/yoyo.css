@@ -1,0 +1,40 @@
+body {
+   height: 500px;width: 100%;
+   font-family:verdana,arial,sans-serif;
+   color:#555555;
+}
+#title{
+	text-align:center;	
+	color:white;
+}
+
+
+.page-header h1{
+	font-family: arial, sans-serif;  font-size: 5.4em;
+  font-family: 'Pacifico', cursive;
+  padding-bottom: .2em;
+  padding-left: 15px;
+color: #191970;}
+
+.jumbotron{
+	background-color: #2E2D88;
+	font-family: 'Pacifico', cursive;color:white;
+	text-align:center;
+}
+.tab content {
+border-left: 10px solid #ddd;
+border-right: 10px solid #ddd;
+border-bottom: 10px solid #ddd;
+padding: 100px;
+
+}
+.nav-tabs (
+margin-bottom: 0;
+	)
+
+.container-fluid{
+	position:relative;
+	text-align:center;
+    margin-left:10%;
+	padding-top:30%;
+}
