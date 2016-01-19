@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Home = require('../models/home');
+var Bid = require('../models/bid');
 var passport = require('passport');
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
@@ -64,9 +65,9 @@ router.get('/homelist', isAuthenticated, function(req, res) {
             homes: homeMap
         });
 
-
     });
 });
+
 router.get('/show/:id', function(req, res) {
 
     var homeid = req.params.id;
@@ -83,6 +84,92 @@ router.get('/show/:id', function(req, res) {
         }
     });
 });
+
+router.get('/show/:homeid/bid/:bidvalue', isAuthenticated, function(req, res) {
+
+    var homeid = req.params.homeid;
+    console.log(homeid);
+
+    var query = {
+        "_id": ObjectId(homeid)
+    };
+
+    console.log(homeid);
+    // var bid = req.param.bidvalue;
+    // var user = req.user._id;
+    console.log(req.params.bidvalue);
+    console.log(req.user._id);
+
+    // var newBid = new Bid();
+
+    // newBid.bidvalue = req.params.bidvalue;
+    // newBid.userid = req.user._id;
+
+    // newBid.save(function(err, bidgood) {
+    //     if (err) {
+    //         console.log('Error in Saving bid: ' + err);
+    //         throw err;
+    //     }
+    //     console.log('BID update succesful');
+    //     Bid = bidgood._id;
+
+    //     console.log(Bid);
+    Home.find({
+        "bids.bidvalue": {
+            $gt: req.params.bidvalue
+        }
+    }, function(err, docs) {
+        if (err) {
+            console.log(err.status);
+        } else {
+            if (!docs.length) {
+                console.log("Nothing higher");
+                Home.findByIdAndUpdate(query, {
+                    $push: {
+                        "bids": {
+                            bidvalue: req.params.bidvalue,
+                            userid: req.user._id
+                        }
+                    }
+                }, {
+                    safe: true,
+                    upsert: true,
+                    new: true
+                }, function(err, model) {
+                    if (err) {
+                        console.log(err.status);
+                    } else {
+
+                        console.log('_id assigned is: %s', model.bids[model.bids.length - 1]._id);
+                        var highestBid = model.bids[model.bids.length - 1]._id;
+                        Home.findOneAndUpdate(query, {
+                            highestbidid: highestBid
+                        }, {
+                            upsert: true
+                        }, function(err, doc) {
+                            if (err)
+                                return res.send(500, {
+                                    error: err
+                                });
+                            else
+                                return res.send("Successfully Saved");
+
+                        });
+
+                    }
+
+                });
+            } else {
+                console.log("There is higher");
+                res.json({
+                    'Error': 'Not higher bid'
+                });
+            }
+        }
+    });
+});
+
+
 
 
 module.exports = router;

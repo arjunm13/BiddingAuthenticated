@@ -8,4 +8,9 @@ module.exports = mongoose.model('Home',{
 	price: String,
 	squareFoot: String,
 	rooms: String,
+	bids: [{
+		bidvalue: Number,
+        userid: String
+	}],
+	highestbidid : String
 });
