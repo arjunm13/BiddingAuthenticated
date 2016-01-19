@@ -40,6 +40,9 @@ router.post('/new', isAuthenticated, function(req, res) {
     newHome.price = req.param('price');
     newHome.squareFoot = req.param('squareFoot');
     newHome.rooms = req.param('rooms');
+    newHome.bids.bidvalue = 0 ;
+    newHome.bids.userid = '000';
+    newHome.highestbidid = '000';
 
     newHome.save(function(err, newHome) {
         if (err) {
@@ -94,26 +97,6 @@ router.get('/show/:homeid/bid/:bidvalue', isAuthenticated, function(req, res) {
         "_id": ObjectId(homeid)
     };
 
-    console.log(homeid);
-    // var bid = req.param.bidvalue;
-    // var user = req.user._id;
-    console.log(req.params.bidvalue);
-    console.log(req.user._id);
-
-    // var newBid = new Bid();
-
-    // newBid.bidvalue = req.params.bidvalue;
-    // newBid.userid = req.user._id;
-
-    // newBid.save(function(err, bidgood) {
-    //     if (err) {
-    //         console.log('Error in Saving bid: ' + err);
-    //         throw err;
-    //     }
-    //     console.log('BID update succesful');
-    //     Bid = bidgood._id;
-
-    //     console.log(Bid);
     Home.find({
         "bids.bidvalue": {
             $gt: req.params.bidvalue
@@ -122,7 +105,7 @@ router.get('/show/:homeid/bid/:bidvalue', isAuthenticated, function(req, res) {
         if (err) {
             console.log(err.status);
         } else {
-            if (!docs.length) {
+            if (docs.length<=1) {
                 console.log("Nothing higher");
                 Home.findByIdAndUpdate(query, {
                     $push: {
@@ -152,7 +135,8 @@ router.get('/show/:homeid/bid/:bidvalue', isAuthenticated, function(req, res) {
                                     error: err
                                 });
                             else
-                                return res.send("Successfully Saved");
+                               // return res.send("Successfully Saved");
+                           		res.json(doc);
 
                         });
 
@@ -160,7 +144,7 @@ router.get('/show/:homeid/bid/:bidvalue', isAuthenticated, function(req, res) {
 
                 });
             } else {
-                console.log("There is higher");
+                console.log(docs.length);
                 res.json({
                     'Error': 'Not higher bid'
                 });
