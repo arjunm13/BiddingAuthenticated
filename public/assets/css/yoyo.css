@@ -1,34 +1,41 @@
 body {
-   height: 500px;width: 100%;
-   font-family:verdana,arial,sans-serif;
-   color:#555555;
-}
-#title{
-	text-align:center;	
-	color:white;
+    background-color: white;
+    background-image: url("http://cdn.freshome.com/wp-content/uploads/2013/05/Lovely-Armandale-House.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    background-size: cover;
 }
 
 
 
-.jumbotron{
-	background-color: #2E2D88;
-	color:white;
-	text-align:center;
+#title {
+    text-align: center;
+    color: white;
 }
+
+.jumbotron {
+    background-color: #2E2D88;
+    color: white;
+    text-align: center;
+}
+
 .tab content {
-border-left: 10px solid #ddd;
-border-right: 10px solid #ddd;
-border-bottom: 10px solid #ddd;
-padding: 100px;
-
+    border-left: 10px solid #ddd;
+    border-right: 10px solid #ddd;
+    border-bottom: 10px solid #ddd;
+    padding: 100px;
 }
-.nav-tabs (
-margin-bottom: 0;
-	)
 
-.container-fluid{
-	position:relative;
-	text-align:center;
-    margin-left:10%;
-	padding-top:30%;
+.nav-tabs ( margin-bottom: 0;
+) .container-fluid {
+    position: relative;
+    text-align: center;
+    margin-left: 10%;
+    padding-top: 30%;
+}
+
+img.resize{
+    width:540px; /* you can use % */
+    height: auto;
 }
