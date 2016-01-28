@@ -8,9 +8,25 @@ module.exports = mongoose.model('Home',{
 	price: String,
 	squareFoot: String,
 	rooms: String,
+	type: String,
+	city: String,
+	province: String,
+	loc: {
+    type: [Number],  // [<longitude>, <latitude>]
+    index: '2d'      // create the geospatial index
+    },
+
+	bedrooms: [{
+		type: String,
+		size: {
+			width: Number,
+			length: Number
+		}
+	}],
 	bids: [{
 		bidvalue: Number,
         userid: String
 	}],
-	highestbidid : String
+	highestbidid : String,
+	highestbidvalue : Number
 });

@@ -36,7 +36,7 @@ var isAuthenticated = function(req, res, next) {
     if (req.isAuthenticated())
         return next();
     // if the user is not authenticated then redirect him to the login page
-    res.render('loginError');
+    res.render('welcome');
 }
 
 /* GET login page. */
@@ -44,6 +44,12 @@ router.get('/', function(req, res) {
     // Display the Login page with any flash message, if any
     res.render('welcome');
 });
+/* GET login page. */
+router.get('/property', function(req, res) {
+    // Display the Login page with any flash message, if any
+    res.render('property');
+});
+
 /* GET login page. */
 router.get('/test2', isAuthenticated, function(req, res) {
     // Display the Login page with any flash message, if any
