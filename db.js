@@ -1,4 +1,4 @@
 module.exports = {
-	//'url' : 'mongodb://<dbuser>:<dbpassword>@novus.modulusmongo.net:27017/<dbName>'
-	'url' : 'mongodb://localhost:27017/bidding'
+	'url' : 'mongodb://arjun:Yoyo1990@ds051625.mongolab.com:51625/bidding'
+	//'url' : 'mongodb://localhost:27017/bidding'
 }
