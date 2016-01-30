@@ -38,7 +38,7 @@ router.get('/', isAuthenticated, function(req, res) {
 /* GET login page. */
 router.get('/new', isAuthenticated, function(req, res) {
     // Display the Login page with any flash message, if any
-    res.render('newHome');
+    res.render('newhome');
 });
 
 /* GET login page. */
