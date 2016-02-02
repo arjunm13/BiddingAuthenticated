@@ -45,9 +45,9 @@ router.get('/', function(req, res) {
     res.render('welcome');
 });
 /* GET login page. */
-router.get('/property', function(req, res) {
+router.get('/bootleg', function(req, res) {
     // Display the Login page with any flash message, if any
-    res.render('property');
+    res.render('bootleg');
 });
 
 /* GET login page. */
