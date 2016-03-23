@@ -26,6 +26,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <style>
   body {
   background-image: url(/img/Lovely-Armandale-House.jpg);
+  background-color: #000000;
   background-position:none;
   background-attachment: fixed;
   background-repeat:no-repeat;
@@ -34,16 +35,25 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </style>
 </head>
 <body>
+<!-- Navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
 
-<nav class="navbar navbar-default" >
-    <div class ="container-fluid">
-    <div class="collapse navbar-collapse" id="mynav">
-      <ul class="nav navbar-nav">
-        <li class="button">
-          <a href="/" class="button"  role="button" aria-haspopup="true" aria-expanded="false">Main  
-        </a>
-          <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Seller 
+          <a href="/" class="navbar-brand">Jannat</a>
+        </div><!-- Navbar Header-->
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          
+        <a href="#myModal" data-toggle="modal" data-target="#myModal" class="btn btn-danger navbar-btn navbar-right glyphicon glyphicon-user"></a>
+          <ul class="nav navbar-nav">
+            <li><a href="/homes/homelist">Buy</a> 
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sell
         <span class="caret"></span></a>
           <ul class="dropdown-menu">
           <li><a href="/homes/new">Create Home</a></li>
@@ -51,82 +61,27 @@ google.maps.event.addDomListener(window, 'load', initialize);
           <li><a href="profile.html">Profile</a></li>
           <li><a href="register.html">Register</a></li>
           </ul>
-          <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Buyer 
-        <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-          <li><a href="/homes/homelist">show Homes</a></li>
 
-          </ul>
-          <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More
+            <li><a href="#Agent Finder">Agent Finder</a>
+
+            <li class= "dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More
         <span class="caret"></span></a>
           <ul class="dropdown-menu">
           <li><a href="lawyers.html">Lawyers</a></li>
-          <li><a href="agents.html">Agents or Broker</a></li>
+          <li><a href="agents.html">Real Estate Agents</a></li>
+          <li><a href="agents.html">Mortgage Agents</a></li>
           <li><a href="bank.html">Loanee</a></li>
           </ul>
 
-      </ul>
-
-        <form action="/homes/search" method="get" class="navbar-form navbar-left" role="search">
-    <div class="input-group">
-    
-      <!-- <input type="text" name="searcharea" class="form-control" placeholder="Search for Homes near.."> -->
-      <!-- <input type="text" name="searcharea" class="form-control" id="txtautocomplete" placeholder="Search for Homes near" /> -->
-<!-- <label id="lblresult"></label> -->
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-       
-    </div>
-</form>
+            <li><a href="#Contact Us">Contact Us</a> 
+          </ul>
+        </div>
+      </div><!-- End Container-->
+    </nav><!-- End navbar -->
 
 
-      <ul class="nav navbar-nav navbar-right">
-      <li><a href="#myModal" data-toggle="modal" data-target="#myModal">Log-in</a></li>
-    </ul>
-    </div>
-  
-  
-  </div>  <!--container-fluid ends-->
-</nav> <!--navbar ends-->
-<nav class="navbar navbar-default">
-  <!-- <div class="container-fluid"> -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a class="navbar-brand" href="/">Jannat</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="/homes/homelist">show Homes</a></li>
-        <li><a href="/homes/new">Create Home</a></li>
-        <li><a href="#myModal" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li> <form action="/homes/search" method="get" class="navbar-form navbar-left" role="search">
-    <div class="input-group">
-    
-      <!-- <input type="text" name="searcharea" class="form-control" placeholder="Search for Homes near"> -->
-      <input type="text" name="searcharea" class="form-control" id="txtautocomplete" placeholder="Search for Homes near" />
-      
 
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
-       
-    </div>
-</form></li> 
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#myModal" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  <!-- </div> -->
-</nav>
+
 
 <div class="modal fade" id="myUploads">
     <div class="modal-dialog">
@@ -196,5 +151,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 </div>
 
 
+</body>
+</html>
 </body>
 </html>

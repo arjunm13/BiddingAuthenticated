@@ -221,4 +221,17 @@
 </div>
 
 </body>
+<%if (user== "ADMIN") { %>
+<div class="jumbotron" id="rooms">
+  <h2>This house is <%= home.publicTrue%></h2>
+  <form action = "/admin/verify/<%= home._id%>/true" method = "post">
+        <input type="submit" name="setTrue" value="setTrue" />
+  </form>
+   <form action = "/admin/verify/<%= home._id%>/false" method = "post">
+        <input type="submit" name="setFalse" value="setFalse" />
+  </form>
+
+</div>
+
+<% } %>
 </html>

@@ -11,7 +11,9 @@ var mongoose = require('mongoose');
 mongoose.connect(dbConfig.url);
 
 var routes = require('./routes/index');
-var homes = require ('./routes/homes')
+var homes = require ('./routes/homes');
+var admin = require ('./routes/admin');
+
 
 var app = express({});
 
@@ -47,6 +49,8 @@ var userrouter = require('./routes/users')(passport);
 app.use('/users', userrouter);
 app.use('/', routes);
 app.use('/homes', homes);
+app.use('/admin', admin);
+
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

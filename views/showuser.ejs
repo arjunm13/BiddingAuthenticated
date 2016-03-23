@@ -12,6 +12,41 @@
               <li>Last Name ---> <%= user.lastName %></li>
               <img src=/<%= user.photopath%> height="200px" width="200px" >
             </ul>
+              <body>
+                <div class="jumbotron">
+      <form id="uploadForm"
+          enctype="multipart/form-data"
+          action="/uploadphoto"
+          method="post">
+      <input type="file" name="userPhoto" />
+      <input type="submit" value="Upload Image" name="submit">
+      <input id="input-24" name="input24[]" type="file" multiple class="file-loading">
+      <span id = "status"></span>
+    </form>
+  </div>
+  </body>
+  <script>
+  $(document).ready(function() {
+
+     $('#uploadForm').submit(function() {
+     $("#status").empty().text("File is uploading...");
+
+        $(this).ajaxSubmit({
+
+            error: function(xhr) {
+                status('Error: ' + xhr.status);
+            },
+
+            success: function(response) {
+          console.log(response)
+          $("#status").empty().text(response);
+            }
+  });
+
+  return false;
+    });    
+});
+  </script>
           </div>
           <a href="signout" class="text-center new-account">Sign Out</a>
           <a href="/homes/new" class="text-center new-account">Create Home</a>

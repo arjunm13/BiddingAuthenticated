@@ -5,13 +5,22 @@ var multer = require('multer');
 var User = require('../models/user');
 var request = require('request');
 
+//ADMIN TEST STUFF
+var Home = require('../models/home');
+var mongoose = require('mongoose');
+var ObjectId = mongoose.Types.ObjectId;
+// END admin test stuff
+
+//Email
+var nodemailer = require('nodemailer');
+
 // geocoder
 var geocoderProvider = 'google';
 var httpAdapter = 'https';
 
 var extra = {
     apiKey: 'AIzaSyBI5F7EZYenZ-CW4gukXeZMN8pAQC7me_Q', // for Mapquest, OpenCage, Google Premier 
-    formatter: null         // 'gpx', 'string', ... 
+    formatter: null // 'gpx', 'string', ... 
 };
 
 var geocoder = require('node-geocoder')(geocoderProvider, httpAdapter, extra);
@@ -39,6 +48,52 @@ var isAuthenticated = function(req, res, next) {
     res.render('welcome');
 }
 
+
+//Mail function 
+function handleSayHello(req, res, homeID) {
+    // Not the movie transporter!
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'arjunmahen13@gmail.com', // Your email id
+            pass: '1234Soccer' // Your password
+        }
+    });
+    transporter.sendMail(mailOptions, function(error, info){
+        console.log("done here 2");
+    if(error){
+        console.log("done here 3");
+        console.log(error);
+        res.json({yo: 'error'});
+    }else{
+        console.log("done here 4");
+        console.log('Message sent: ' + info.response);
+        res.json({yo: info.response});
+    };
+});
+    console.log("done here 1");
+    };
+
+var text = 'Killa KAM Sent me';
+
+var mailOptions = {
+    from: 'arjunmahen13@gmail.com', // sender address
+    to: 'eroppong@gmail.com, gjhandi@ryerson.ca, arjun.mahendran@ryerson.ca', // list of receivers
+    subject: 'From EDP Server', // Subject line
+    text: text //, // plaintext body
+    // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+};
+
+//router.post('/sayHello', handleSayHello);
+
+/* GET login page. */
+router.get('/sayHello', handleSayHello, function(req, res) {
+    
+});
+
+
+
+
 /* GET login page. */
 router.get('/', function(req, res) {
     // Display the Login page with any flash message, if any
@@ -47,7 +102,27 @@ router.get('/', function(req, res) {
 /* GET login page. */
 router.get('/bootleg', function(req, res) {
     // Display the Login page with any flash message, if any
-    res.render('bootleg');
+    res.render('testBoot');
+});
+/* GET login page. */
+router.get('/agentFinal', function(req, res) {
+    // Display the Login page with any flash message, if any
+    res.render('agentFinal');
+});
+/* GET login page. */
+router.get('/userProfile', function(req, res) {
+    // Display the Login page with any flash message, if any
+    res.render('userProfile');
+});
+/* GET login page. */
+router.get('/pop', function(req, res) {
+    // Display the Login page with any flash message, if any
+    res.render('popUpMap');
+});
+/* GET login page. */
+router.get('/listTest', function(req, res) {
+    // Display the Login page with any flash message, if any
+    res.render('listTest');
 });
 
 /* GET login page. */
@@ -57,22 +132,23 @@ router.get('/test2', isAuthenticated, function(req, res) {
         message: req.flash('message')
     });
 });
+
+
+
 router.get('/test', function(req, res) {
     // Display the Login page with any flash message, if any
     var url = "https://maps.googleapis.com/maps/api/geocode/json?address=4016+chicory+court"
 
     geocoder.geocode('4016 chicory court, mississauga', function(err, result) {
-    geocodedresult = result;
-    console.log(geocodedresult[0].formattedAddress);
-	var output = geocodedresult[0].latitude;
-	output = output + ' ';
-	output = output + geocodedresult[0].longitude;
+        geocodedresult = result;
+        console.log(geocodedresult[0].formattedAddress);
+        var output = geocodedresult[0].latitude;
+        output = output + ' ';
+        output = output + geocodedresult[0].longitude;
 
+        res.send(output);
 
-    res.send(output);
-
-
-});
+    });
 
 });
 

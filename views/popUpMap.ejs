@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JANNAT</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&signed in=true&libraries=places"></script>
+<script type="text/javascript">
+function initialize() {
+  var autocomplete = new google.maps.places.Autocomplete(document.getElementById('txtautocomplete'));
+  google.maps.event.addListener(autocomplete, 'place_changed', function () {
+  var places = autocomplete.getplace();
+  var location = "<Location>:</b>" + places.formatted_address + "<br/>";
+  location += "<b>Latitude:</b>" + places.geometry.location.A + "br/";
+  location += "<b>Longitude:</b>" + places.geometry.location.F + "br/";
+  document.getElementById('lblresult').inner.HTML = location
+  });
+};
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+  <style>
+  body {
+  background-image: url(/img/Lovely-Armandale-House.jpg);
+  background-position:none;
+  background-attachment: fixed;
+  background-repeat:no-repeat;
+  background-size:cover;
+  }
+</style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <!-- <div class="container-fluid"> -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="/">Jannat</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/homes/homelist">show Homes</a></li>
+        <li><a href="/homes/new">Create Home</a></li>
+
+        <li> <form action="homes/search" method="get" class="navbar-form navbar-left" role="search">
+    <div class="input-group">
+    
+      <!-- <input type="text" name="searcharea" class="form-control" placeholder="Search for Homes near"> -->
+      <input type="text" name="searcharea" class="form-control" id="txtautocomplete" placeholder="Search for Homes near" />
+
+
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">Go!</button>
+      </span>
+       
+    </div>
+</form></li> 
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+<!--         <li><a href="#myModal" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+
+          <li><a href="/bootleg"><span class="glyphicon glyphicon-user"></span>  User</a></li>
+
+
+
+      </ul>
+    </div>
+  <!-- </div> -->
+</nav>
+          <li><a href="#myModal" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+<div class="modal fade" id="myUploads">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 class="modal-title">Upload</h4>
+    </div>
+    <div class="modal-body">
+    <form role="form">
+    <div class="form-group">
+    <label for="propertytype">Property Type:</label>
+    <input type="propertytype" class="form-control" id="propertytype" placeholder="Property Type">
+    </div>
+    <div class="form-group">
+    <label for="buildingtype">Building Type:</label>
+    <input type="buildingtype" class="form-control" id="buildingtype" placeholder="Building Type">
+    </div>
+    <div class="form-group">
+    <label for="rooms">Rooms:</label>
+    <input type="text" class="form-control" id="buildingtype" placeholder="Number of Rooms">
+    </div>
+    <div class="form-group">
+    <label for="location">City:</label>
+    <input type="text" class="form-control" id="buildingtype" placeholder="Please Enter City">
+    </div>
+    <div class="form-group">
+    <label for="cooling">Cooling:</label>
+    <input type="text" class="form-control" id="buildingtype" placeholder="Enter Cooling Type">
+    </div>
+    <span class="btn btn-default btn-file">
+    Upload  <input type="file">
+    </span>
+
+    <button type="submit" class="btn btn-danger">Submit</button>
+    </form>
+        </div>
+        
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Log-in</h4>
+        </div>
+        <div class="modal-body">
+
+        </div>
+<!--         <div class="modal-footer">
+          <a href="#" data-dismiss="modal" class="btn">Close</a>
+          <a href="#" class="btn btn-primary">Log-in</a>
+        </div> -->
+        <div class="container">
+     <div class="row-fluid">
+        <div class="span8">
+            <iframe width="50%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=15+Springfield+Way,+Hythe,+CT21+5SH&aq=t&sll=52.8382,-2.327815&sspn=8.047465,13.666992&ie=UTF8&hq=&hnear=15+Springfield+Way,+Hythe+CT21+5SH,+United+Kingdom&t=m&z=14&ll=51.077429,1.121722&output=embed"></iframe>
+        </div>
+        
+        <div class="span4">
+            <h2>Snail mail</h2>
+            <address>
+                <strong>Hythe Window Cleaning</strong><br>
+                15 Springfield Way<br>
+                Hythe<br>
+                Kent<br>
+                United Kingdon<br>
+                CT21 5SH<br>
+                <abbr title="Phone">P:</abbr> 01234 567 890
+            </address>
+        </div>
+    </div>
+</div>
+      </div>
+    </div>
+</div>

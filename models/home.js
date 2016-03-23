@@ -5,17 +5,21 @@ module.exports = mongoose.model('Home',{
 	id: String,
 	userid: String,
 	address: String,
-	price: String,
-	squareFoot: String,
-	rooms: String,
-	type: String,
+	price: Number,
+	squareFoot: Number,
+	bedrooms: String,
+	bathrooms: Number,
+	homeType: String,
 	city: String,
+	region: String,
 	province: String,
+	saleRent: String,
+	postalcode: String,
+	hasPhotos: Boolean,
 	loc: {
     type: [Number],  // [<longitude>, <latitude>]
     index: '2d'      // create the geospatial index
     },
-
 	bedrooms: [{
 		type: String,
 		size: {
@@ -28,5 +32,8 @@ module.exports = mongoose.model('Home',{
         userid: String
 	}],
 	highestbidid : String,
-	highestbidvalue : Number
+	highestbidvalue : Number,
+	publicTrue : Boolean,
+	photopath: String
+
 });
