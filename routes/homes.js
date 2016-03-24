@@ -112,6 +112,9 @@ router.post('/new', isAuthenticated, function(req, res) {
         newHome.rooms = req.param('rooms');
         newHome.homeType = req.param('homeType');
         newHome.saleRent = req.param('saleRent');
+        newHome.bedrooms = req.param('bedrooms');
+        newHome.bathrooms = req.param('bathrooms');
+        newHome.bidding = req.param('BiddingActive');
         newHome.bids.bidvalue = 0;
         newHome.bids.userid = '000';
         newHome.highestbidid = '000';
@@ -176,7 +179,7 @@ router.get('/homelist', isAuthenticated, function(req, res) {
 });
 
 /* GET login page. */
-router.get('/search', isAuthenticated, function(req, res) {
+router.get('/search', function(req, res) {
 
     var area = req.param('searcharea');
     var homeType = req.param('homeType');
@@ -235,26 +238,25 @@ router.get('/search', isAuthenticated, function(req, res) {
                 loc: {
                     $near: coords,
                     $maxDistance: maxDistance
-                },
+                 },
                 squareFoot: {
                     $gt: sqft-1
                 },
                 price: {
                     $gt: greaterThanPrice -1,
-                    $lt: lessThanPrice+1
-                },
-                bidding: bidding,
-                saleRent: saleRent,
-                homeType: homeType,
-                bedrooms: {
-                    $gt: numOfBedrooms
-                },
-                bathrooms: {
-                    $gt: numOfBathrooms
-                }                
+                     $lt: lessThanPrice+1
+                 }
+                // bidding: bidding,
+                // saleRent: saleRent,
+                // homeType: homeType,
+                // bedrooms: {
+                //     $gt: numOfBedrooms
+                // },
+                // bathrooms: {
+                //     $gt: numOfBathrooms
+                // },                
                 // squareFoot: {
-                //     $gt: 4999,
-                //     $lt: 5001
+                //     $gt: sqft
                 // }
                 // type: "condoApt",
                 // hasPhotots: false,

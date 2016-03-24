@@ -38,28 +38,21 @@
   </div>
 
  </div>
-<div class="col-sm-4 ">
+<div class="col-sm-3 ">
 
-<div class="form-group">
-  <label for="home type">Home Type:</label>
-  <select class="form-control" id="home type">
-    <option>Detached-House</option>
-    <option>Semi-Detach</option>
-  <option>Mansion</option>
-    <option>Apartment</option>
-  <option>TownHouse</option>
-  </select>
-  </div>
-
-</div>
-
-
-
-<div class="col-sm-4">
-
-<div class="form-group">
-  <label for="home type">Number of Bathrooms:</label>
-  <select class="form-control" id="home type">
+ <div class="form-group">
+                      <label for="homeType">Home Type</label>
+                      <select name="homeType" class="form-control" value="condo">
+                        <option selected="selected" value="Condo">Condo</option>
+                        <option  value="Detached House">Detached-House</option>
+                        <option value="Town House">Town House</option>
+                        <option value="Semi Detached">semi-detached-house</option>
+                        <option value="Mansion">mansion</option>
+                      </select>
+                    </div>
+  <div class="form-group">
+  <label for="bathrooms">Bathrooms:</label>
+  <select class="form-control" name="bathrooms" value="1">
     <option>1</option>
     <option>2</option>
   <option>3</option>
@@ -72,11 +65,12 @@
 
 </div>
 
-<div class="col-sm-4">
 
+
+<div class="col-sm-3">
 <div class="form-group">
-  <label for="home type">Number of Rooms:</label>
-  <select class="form-control" id="home type">
+  <label for="bedrooms">Rooms:</label>
+  <select class="form-control" name="bedrooms">
     <option>1</option>
     <option>2</option>
   <option>3</option>
@@ -89,41 +83,29 @@
     <option>10+</option>
   </select>
   </div>
-
-</div>
-<div class="container">
-
-<div class="row">
-<div class="col-sm-4 ">
-
-<div class="form-group">
+  <div class="form-group">
   <label for="price">Price:</label>
-  <input type="text" class="form-control" id="price">
+  <input type="text" class="form-control" name="price">
   </div>
 
 </div>
 
 
 
-<div class="col-sm-4">
 
+<div class="col-sm-3">
 <div class="form-group">
-  <label for="home type">Options:</label>
-  <select class="form-control" id="home type">
-    <option>For Sale</option>
-    <option>For Rent</option>
-  <option>For Rent or Sale</option>
+  <label for="saleRent">Options:</label>
+  <select class="form-control" name="saleRent" value="forSale">
+    <option value="forSale">For Sale</option>
+    <option value="forRent">For Rent</option>
+
   </select>
 
 </div>
-
-</div>
-
-<div class="col-sm-4">
-
 <div class="form-group">
-  <label for="home type">Province:</label>
-  <select class="form-control" name="province"id="home type">
+  <label for="province">Province:</label>
+  <select class="form-control" name="province">
     <option>ON</option>
     <option>QC</option>
   <option>BC</option>
@@ -137,9 +119,37 @@
   </select>
   </div>
 
+
 </div>
 
+<div class="col-sm-3 ">
+<div class="form-group">
+                      <label for="BiddingActive">Bidding?</label>
+                      <select name="BiddingActive" class="form-control"/>
+                      <option value="true">Bidding</option>
+                      <option value="false">Non-Bidding</option>
+                    </select>
+                    </div>
+
+</div>
+
+
+
+<div class="col-sm-3">
+ <div class="form-group">
+                      <label for="squareFoot">squareFoot</label>
+                      <input name="squareFoot" class="form-control" value="0"/>
+                   
+                    </div>
+
+</div>
+
+
+</div>
+
+ <button type="submit" class="btn btn-success">Submit</button>
 </div> <!--end of row-->
+
 </div><!--end of container-->
 
 <!--beginning of inline form-->
@@ -165,7 +175,7 @@
   });
   </script>
   </div>-->
-  <button type="submit" class="btn btn-success">Submit</button>
+
 
 </form>
 

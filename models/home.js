@@ -21,13 +21,13 @@ module.exports = mongoose.model('Home',{
     type: [Number],  // [<longitude>, <latitude>]
     index: '2d'      // create the geospatial index
     },
-	bedrooms: [{
-		type: String,
-		size: {
-			width: Number,
-			length: Number
-		}
-	}],
+	// bedrooms: [{
+	// 	type: String,
+	// 	size: {
+	// 		width: Number,
+	// 		length: Number
+	// 	}
+	// }],
 	bids: [{
 		bidvalue: Number,
         userid: String
