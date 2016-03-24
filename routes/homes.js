@@ -185,8 +185,18 @@ router.get('/search', isAuthenticated, function(req, res) {
     var lessThanPrice = req.param('ltPrice');
     var numOfBedrooms = req.param('numOfBedrooms');
     var numOfBathrooms = req.param('numOfBathrooms');
-    var sqft = req.param('squareFoot');
+    var sqft = req.param('squareFoot');;
+    var bidding = req.param('BiddingActive');
 
+    console.log(area); 
+    console.log(homeType);
+     console.log(saleRent); 
+     console.log(greaterThanPrice);
+     console.log(lessThanPrice); 
+     console.log(numOfBedrooms); 
+     console.log(numOfBathrooms);
+     console.log(sqft);
+     console.log(bidding);
 
     geocoder.geocode(area, function(err, result) {
 
@@ -228,7 +238,20 @@ router.get('/search', isAuthenticated, function(req, res) {
                 },
                 squareFoot: {
                     $gt: sqft-1
-                }
+                },
+                price: {
+                    $gt: greaterThanPrice -1,
+                    $lt: lessThanPrice+1
+                },
+                bidding: bidding,
+                saleRent: saleRent,
+                homeType: homeType,
+                bedrooms: {
+                    $gt: numOfBedrooms
+                },
+                bathrooms: {
+                    $gt: numOfBathrooms
+                }                
                 // squareFoot: {
                 //     $gt: 4999,
                 //     $lt: 5001

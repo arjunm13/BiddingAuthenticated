@@ -16,6 +16,7 @@ module.exports = mongoose.model('Home',{
 	saleRent: String,
 	postalcode: String,
 	hasPhotos: Boolean,
+	bidding: Boolean,
 	loc: {
     type: [Number],  // [<longitude>, <latitude>]
     index: '2d'      // create the geospatial index

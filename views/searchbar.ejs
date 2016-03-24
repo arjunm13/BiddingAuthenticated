@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="col-md-12">
+  <div class="jumbotron" style="background: rgb(54, 0, 200); /* This is for ie8 and below */
+   background: rgba(128, 223, 255, 1.0); ">
+
+   <style>
+ .jumbotron {
+
+   color: #36292A;
+ background-color: #F0F8FF;
+border-radius: 10px;
+
+border: 2px ;
+padding: 10px;
+
+} </style>
+   <div class="row">
+
+<div class="quick-seaaaaarch">
+              <div class="row">
+                <form role="form" action="/homes/search" method="GET">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                  <label for="searchArea">Search for Homes Near</label>
+                  <input type="text" name="searcharea" class="form-control" id="txtautocomplete" placeholder="Enter Search location" autocomplete="off">
+                </div>
+
+               <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div class="form-group">
+                      <label for="saleRent">Sale / Rent</label>
+                      <select name="saleRent" class="form-control" value="">
+                        <option selected="selected" value="sale">For Sale</option>
+                        <option value="rent">For Rent</option>
+                        <option value="lease">Lease</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="numOfBedrooms">Bedrooms</label>
+                      <select name="numOfBedrooms" class="form-control" value="">
+                        <option value="1">1+</option>
+                        <option value="2">2+</option>
+                        <option value="3">3+</option>
+                        <option value="4">4+</option>
+                        <option value="5">5+</option>
+                        <option value="6">6+</option>
+                        <option value="7">7+</option>
+                      </select>
+                    </div>
+                  </div> 
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div class="form-group">
+                      <label for="country">Home Type</label>
+                      <select name="country" class="form-control" value="condo">
+                        <option value="condo">Condo</option>
+                        <option selected="selected" value="detachedHouse">Detached-House</option>
+                        <option value="townHouse">Town House</option>
+                        <option value="semi">semi-detached-house</option>
+                        <option value="mansion">mansion</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="numOfBathrooms">Bathroom</label>
+                      <select name="numOfBathrooms" class="form-control" value="">
+                        <option value="1">1+</option>
+                        <option value="2">2+</option>
+                        <option value="3">3+</option>
+                        <option value="4">4+</option>
+                        <option value="5">5+</option>
+                        <option value="6">6+</option>
+                        <option value="7">7+</option>
+                      </select>
+                    </div>
+                  </div> 
+                  <!-- break -->
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+
+                    <div class="form-group">
+                      <label for="ltPrice">Max Price</label>
+                      <input name="ltPrice" class="form-control" value="100000000"/>
+                        
+                     
+
+                    </div>
+                    <div class="form-group">
+                      <label for="squareFoot">squareFoot</label>
+                      <input name="squareFoot" class="form-control" value="0"/>
+                   
+                    </div>
+                  </div> 
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+
+                    <div class="form-group">
+                      <label for="gtPrice">Min Price</label>
+                      <input name="gtPrice" class="form-control" value="0"/>
+                        
+                     
+
+                    </div>
+                    <div class="form-group">
+                      <label for="BiddingActive">Bidding?</label>
+                      <select name="BiddingActive" class="form-control"/>
+                      <option>Bidding</option>
+                      <option>Non-Bidding</option>
+                    </select>
+                    </div>
+                  </div> 
+                  <!-- break -->
+
+                  <div class="col-md-12 col-sm-12"><input type="submit" name="submit" class="btn btn-primary btn-lg btn-block"></div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+   </div>
+</div>
+</div>
+
+</body>
+</html>

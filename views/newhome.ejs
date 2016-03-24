@@ -1,5 +1,218 @@
-<% include layout.ejs %>
+<% include navbar.ejs %>
+
+
+
+
+<body>
+<header>
+<!-- <div class = "container">
+<h1 align="center" >Sell Or Rent Your Home Now</h1>
+</div> -->
+</header>
+<br>
+
+
+
+<br>
+<br>
+
+
+<div class = "container">
+   <div class="jumbotron" style="background: rgb(54, 0, 200); /* This is for ie8 and below */
+   background: rgba(128, 223, 255, 1.0); ">
+
+<h2 align ="center" style="font-family:sans-serif;"> PLEASE ENTER HOUSE DETAILS BELOW</h2>
+<div class="row">
+  <form role="form" action="/homes/new" method="POST" >
+    <div class="container">
+
+  <div class="form-group">
+    <label for="address">Address Line 1:</label>
+    <input type="text" name="address" class="form-control" placeholder="address line 1">
+  <p class="help-block">Street address, P.O. box, company name, c/o</p>
+  </div>
+  <div class="form-group">
+    <label for="city">City:</label>
+    <input type="text" class="form-control" name="city" id="city" placeholder="City">
+  <p class="help-block">eg. Toronto Brampton North York</p>
+  </div>
+
+ </div>
+<div class="col-sm-4 ">
+
+<div class="form-group">
+  <label for="home type">Home Type:</label>
+  <select class="form-control" id="home type">
+    <option>Detached-House</option>
+    <option>Semi-Detach</option>
+  <option>Mansion</option>
+    <option>Apartment</option>
+  <option>TownHouse</option>
+  </select>
+  </div>
+
+</div>
+
+
+
+<div class="col-sm-4">
+
+<div class="form-group">
+  <label for="home type">Number of Bathrooms:</label>
+  <select class="form-control" id="home type">
+    <option>1</option>
+    <option>2</option>
+  <option>3</option>
+    <option>4</option>
+  <option>5</option>
+    <option>6</option>
+  </select>
+
+</div>
+
+</div>
+
+<div class="col-sm-4">
+
+<div class="form-group">
+  <label for="home type">Number of Rooms:</label>
+  <select class="form-control" id="home type">
+    <option>1</option>
+    <option>2</option>
+  <option>3</option>
+    <option>4</option>
+  <option>5</option>
+    <option>6</option>
+  <option>7</option>
+    <option>8</option>
+  <option>9</option>
+    <option>10+</option>
+  </select>
+  </div>
+
+</div>
 <div class="container">
+
+<div class="row">
+<div class="col-sm-4 ">
+
+<div class="form-group">
+  <label for="price">Price:</label>
+  <input type="text" class="form-control" id="price">
+  </div>
+
+</div>
+
+
+
+<div class="col-sm-4">
+
+<div class="form-group">
+  <label for="home type">Options:</label>
+  <select class="form-control" id="home type">
+    <option>For Sale</option>
+    <option>For Rent</option>
+  <option>For Rent or Sale</option>
+  </select>
+
+</div>
+
+</div>
+
+<div class="col-sm-4">
+
+<div class="form-group">
+  <label for="home type">Province:</label>
+  <select class="form-control" name="province"id="home type">
+    <option>ON</option>
+    <option>QC</option>
+  <option>BC</option>
+    <option>AB</option>
+  <option>NWT</option>
+    <option>SK</option>
+  <option>MB</option>
+    <option>YK</option>
+  <option>NU</option>
+    <option>NL + LD</option>
+  </select>
+  </div>
+
+</div>
+
+</div> <!--end of row-->
+</div><!--end of container-->
+
+<!--beginning of inline form-->
+
+  <br>
+ <!-- <div class = "container">
+  <label class="control-label">Select File</label>
+  <input id="input-21" type="file" accept="image/*" class="file-loading">
+  <script>
+  $(document).on('ready', function() {
+    $("#input-21").fileinput({
+        previewFileType: "image",
+        browseClass: "btn btn-success",
+        browseLabel: "Pick Image",
+        browseIcon: "<i class=\"glyphicon glyphicon-picture\"></i> ",
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: "<i class=\"glyphicon glyphicon-trash\"></i> ",
+        uploadClass: "btn btn-info",
+        uploadLabel: "Upload",
+        uploadIcon: "<i class=\"glyphicon glyphicon-upload\"></i> "
+    });
+  });
+  </script>
+  </div>-->
+  <button type="submit" class="btn btn-success">Submit</button>
+
+</form>
+
+
+</div>
+</div> <!--row-->
+</div> <!--end of container-->
+</div>
+
+
+
+
+
+<br>
+
+<!-- beginning of slideshow-->
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
   <div class="row">
     <div class="col-sm-6 col-md-4 col-md-offset-4">
       <h1 class="text-center login-title">CREATE A NEW HOUSE
@@ -20,5 +233,5 @@
       </h1>
     </div>
   </div>
-</div>
+</div> -->
 

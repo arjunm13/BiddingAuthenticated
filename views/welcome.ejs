@@ -1,9 +1,6 @@
 <% include layout.ejs %>
 <div class="container">
 	<div class="col-md-12">
-	<div class="jumbotron" style="background: rgb(54, 0, 200); /* This is for ie8 and below */
-   background: rgba(128, 223, 255, 1.0); ">
-
    <style >
  .jumbotron {
 
@@ -15,91 +12,7 @@ border: 2px ;
 padding: 10px;
 
 } </style>
-   <div class="row">
 
-<div class="quick-seaaaaarch">
-              <div class="row">
-                <form role="form" action="/homes/search" method="GET">
-                	<div class="col-md-12 col-sm-12 col-xs-12">
-                	<label for="searchArea">Search for Homes Near</label>
-                	<input type="text" name="searcharea" class="form-control" id="txtautocomplete" placeholder="Enter Search location" />
-                </div>
-
-               <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div class="form-group">
-                      <label for="country">Country</label>
-                      <select name="country" class="form-control" value="">
-                        <option selected="selected">Canada</option>
-                        <option>Indonesia</option>
-                        <option>Japan</option>
-                        <option>South Korea</option>
-                        <option>China</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="bedroom">Bedroom</label>
-                      <select name="bedroom" class="form-control" value="">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                      </select>
-                    </div>
-                  </div> 
-                  <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div class="form-group">
-                      <label for="country">Home Type</label>
-                      <select name="country" class="form-control" value="">
-                        <option selected="selected">Canada</option>
-                        <option>Condo</option>
-                        <option>Home</option>
-                        <option>Town House</option>
-                        <option>South Korea</option>
-                        <option>China</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="bedroom">Bedroom</label>
-                      <select name="bedroom" class="form-control" value="">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                      </select>
-                    </div>
-                  </div> 
-                  <!-- break -->
-                  <div class="col-md-4 col-sm-4 col-xs-4">
-                    <div class="form-group">
-                      <label for="location">Location</label>
-                      <select name="City" class="form-control" value="">
-                        <option selected="selected">Mississauga</option>
-                        <option>Tasmania</option>
-                        <option>Yogyakarta</option>
-                        <option>Tokyo</option>
-                        <option>Busan</option>
-                        <option>Taipe</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="squareFoot">squareFoot</label>
-                      <select name="squareFoot" class="form-control">
-                        <option>2000</option>
-                        <option>5000</option>
-                        <option>1000</option>
-                        <option>500</option>
-                      </select>
-                    </div>
-                  </div> 
-                  <!-- break -->
-
-                  <div class="col-md-12 col-sm-12"><input type="submit" name="submit" class="btn btn-primary btn-lg btn-block"></div>
-
-                </form>
-              </div>
-            </div>
-          </div>
-   </div>
 </div>
 </div>
    <link rel="stylesheet" href="/stylesheets/homelist.css">
@@ -216,5 +129,5 @@ padding: 10px;
 </div>
 </div>
 <!-- /container -->
-
+<% include footer.ejs %>
 <!-- /container -->
