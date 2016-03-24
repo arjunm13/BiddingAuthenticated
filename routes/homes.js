@@ -248,16 +248,13 @@ router.get('/search', function(req, res) {
                  },
                  bidding: bidding,
                  saleRent: saleRent,
-                 homeType: homeType
-                // bedrooms: {
-                //     $gt: numOfBedrooms
-                // },
-                // bathrooms: {
-                //     $gt: numOfBathrooms
-                // },                
-                // squareFoot: {
-                //     $gt: sqft
-                // }
+                 homeType: homeType,
+                 bedrooms: {
+                     $gt: numOfBedrooms-1
+                 },
+                bathrooms: {
+                    $gt: numOfBathrooms-1
+                }
                 // type: "condoApt",
                 // hasPhotots: false,
                 // bedrooms: {
