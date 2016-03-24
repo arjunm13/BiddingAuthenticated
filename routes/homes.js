@@ -245,10 +245,10 @@ router.get('/search', function(req, res) {
                 price: {
                     $gt: greaterThanPrice -1,
                      $lt: lessThanPrice+1
-                 }
-                // bidding: bidding,
-                // saleRent: saleRent,
-                // homeType: homeType,
+                 },
+                 bidding: bidding,
+                 saleRent: saleRent,
+                 homeType: homeType
                 // bedrooms: {
                 //     $gt: numOfBedrooms
                 // },
