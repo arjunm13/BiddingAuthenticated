@@ -116,10 +116,16 @@ router.get('/userProfile', function(req, res) {
     res.render('userProfile');
 });
 /* GET login page. */
-router.get('/prof', function(req, res) {
+router.get('/userPage', function(req, res) {
     // Display the Login page with any flash message, if any
-    res.render('createProf');
+    res.render('userPage');
 });
+/* GET login page. */
+router.get('/agentNew', function(req, res) {
+    // Display the Login page with any flash message, if any
+    res.render('agentnew');
+});
+
 /* GET login page. */
 router.get('/listTest', function(req, res) {
     // Display the Login page with any flash message, if any
@@ -167,23 +173,17 @@ router.post('/uploadphoto', isAuthenticated ,function(req,res){
 
         var pathstr = req.file.path;
         newUser.photopath = pathstr.slice(7);
+
         //newUser.photopath = newUser.photopath.replace('/path', '')
+
         User.findOneAndUpdate(query, {photopath : newUser.photopath}, {upsert:true}, function(err, doc){
             if(err)
                 return res.send(500, {error: err});
             else 
                 return res.send("Successfully Saved");  
-
         });
-    // function callback (err, numAffected) {
-    //   // numAffected is the number of updated documents
-    // });
 
-            // var query = { username : req.user.username };
-            // User.update(query, { photopath: 'req.file.path' }, options, callback);
-
-            res.send("Files is uploaded");
-        });
     });
+});
 
 module.exports = router;
