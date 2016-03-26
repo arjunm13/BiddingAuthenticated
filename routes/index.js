@@ -45,7 +45,8 @@ var isAuthenticated = function(req, res, next) {
     if (req.isAuthenticated())
         return next();
     // if the user is not authenticated then redirect him to the login page
-    res.render('loginError');
+    // res.render('loginError');
+    res.redirect("/users/loginPage");
 }
 
 
@@ -105,9 +106,9 @@ router.get('/bootleg', function(req, res) {
     res.render('testBoot');
 });
 /* GET login page. */
-router.get('/agentFinal', function(req, res) {
+router.get('/s2', function(req, res) {
     // Display the Login page with any flash message, if any
-    res.render('agentFinal');
+    res.render('signup2');
 });
 /* GET login page. */
 router.get('/userProfile', function(req, res) {
@@ -115,9 +116,9 @@ router.get('/userProfile', function(req, res) {
     res.render('userProfile');
 });
 /* GET login page. */
-router.get('/pop', function(req, res) {
+router.get('/prof', function(req, res) {
     // Display the Login page with any flash message, if any
-    res.render('popUpMap');
+    res.render('createProf');
 });
 /* GET login page. */
 router.get('/listTest', function(req, res) {
@@ -152,45 +153,37 @@ router.get('/test', function(req, res) {
 
 });
 
-router.post('/uploadphoto', isAuthenticated, function(req, res) {
-    upload(req, res, function(err) {
-        if (err) {
-            return res.send("Error uploading file");
-        }
-        var extension = req.user._id;
-        console.log(extension);
-        console.log(req.file.path);
+router.post('/uploadphoto', isAuthenticated ,function(req,res){
+        upload(req,res,function(err){
+            if(err){
+                return res.send("Error uploading file");
+            }
+            var extension = req.user._id;
+            console.log(extension);
+            console.log(req.file.path);
 
-        var query = {
-            'username': req.user.username
-        };
+        var query = { 'username' :req.user.username};
         var newUser = new User();
 
         var pathstr = req.file.path;
         newUser.photopath = pathstr.slice(7);
         //newUser.photopath = newUser.photopath.replace('/path', '')
-        User.findOneAndUpdate(query, {
-            photopath: newUser.photopath
-        }, {
-            upsert: true
-        }, function(err, doc) {
-            if (err)
-                return res.send(500, {
-                    error: err
-                });
-            else
-                return res.send("Successfully Saved");
+        User.findOneAndUpdate(query, {photopath : newUser.photopath}, {upsert:true}, function(err, doc){
+            if(err)
+                return res.send(500, {error: err});
+            else 
+                return res.send("Successfully Saved");  
 
         });
-        // function callback (err, numAffected) {
-        //   // numAffected is the number of updated documents
-        // });
+    // function callback (err, numAffected) {
+    //   // numAffected is the number of updated documents
+    // });
 
-        // var query = { username : req.user.username };
-        // User.update(query, { photopath: 'req.file.path' }, options, callback);
+            // var query = { username : req.user.username };
+            // User.update(query, { photopath: 'req.file.path' }, options, callback);
 
-        res.send("Files is uploaded");
+            res.send("Files is uploaded");
+        });
     });
-});
 
 module.exports = router;

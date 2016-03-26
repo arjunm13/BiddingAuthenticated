@@ -3,7 +3,7 @@ var User = require('../models/user');
 var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport){
-
+    
 	passport.use('signup', new LocalStrategy({
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
@@ -33,6 +33,24 @@ module.exports = function(passport){
                         newUser.firstName = req.param('firstName');
                         newUser.lastName = req.param('lastName');
                         newUser.userType = req.param('userType');
+                        newUser.gender = req.param('gender');
+                        newUser.birthDate = req.param('birthDate');
+                        newUser.birthMonth = req.param('birthMonth');
+                        newUser.birthYear = req.param('birthYear');
+                        newUser.address = req.param('address');
+                        newUser.company = req.param('company');
+
+
+                        console.log(newUser.username);
+                           console.log(newUser.password);
+                              console.log(newUser.email);
+                                 console.log(newUser.firstName);
+                                    console.log(newUser.lastName);
+                                       console.log(newUser.userType);
+                                          console.log(newUser.gender);
+                                             console.log(newUser.birthDate);
+                                              console.log(newUser.birthYear);
+                                                console.log(newUser.birthMonth);
 
                         // save the user
                         newUser.save(function(err) {

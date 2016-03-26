@@ -1,45 +1,91 @@
-<% include layout.ejs %>
-<!-- <link type="text/css" href="stylesheets/homelist.css" rel="stylesheet"> -->
-<section>
-        <div class="jumbotron" id="summary">
-          <h2>Townhouse in Brampton,<small> <%= home.address %></small></h2>
-        
+<% include profilelayout.ejs %>
 
-        <div class="row">
-          <div class="col-md-3">
-            <blockquote>
-              <p>Price</p>
-              <footer>$200,000</footer>
-            </blockquote>
-          </div>
-          <div class="col-md-3">
-            <blockquote>
-              <p>Area</p>
-              <footer><%= home.bids %></footer>
-            </blockquote>
-          </div>
-          <div class="col-md-3">
-            <blockquote>
-              <p>Closing Date</p>
-              <footer>April 14th, 2016</footer>
-            </blockquote>
-          </div>
-          <div class="col-md-3">
-            <blockquote>
-              <p>Location</p>
-              <footer>Jane & Finch </footer>
-            </blockquote>
-          </div>
-        </div><!-- End row -->
-         </div><!--Enasasdasdadner--> 
 <!-- Gallery -->
- <div class="jumbotron" id="gallery">
+  <div class="container">
     <section>
+      <div class="relative">
       <div class="page-header" id="Sell">
-          <h2>Gallery<small> Check out the Awesome Gallery</small></h2>
-        </div>
+          <h4><%= home.address%><!-- <small> Brampton, Ontario, L6W 3R8</small> --></h4>
+        </div> 
 
-        <div class="carousel slide" id="screenshot-carousel" data-ride="carousel"  >
+        <div class="absolute">
+       
+<div class="jumbotron">
+        
+       
+
+ <form class="form-horizontal" role="form" method="post" action="</bid">
+    <div class="form-group">
+      
+        <label for="Bid" class="col-sm-2 control-label"></label>
+        <div class="col-sm-10">
+             <p><h1>$50,000</h1>
+                  <h5>Highest Bid</h5>
+           </p>
+        
+    
+        
+  
+   
+</div>
+</form> 
+       <input type="text" class="form-control" id="bidvalue" name="bidvalue"  placeholder="Enter Your Bid" value=""/>
+
+         <div class="col-sm-10 col-sm-offset-2">
+        <h5>  <input id="submit" name="submit" type="submit" value="BID" class="btn btn-primary"/> </h5>
+      </div> 
+      </div></div> 
+
+  <div class="col-md-12"><div class=google>
+
+  <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/place?q=105 Rollingwood Drive, Brampton, ON
+      &zoom=17
+      &key=AIzaSyCKhfyQAD8hLWF1GSsTB5E3WzcL2ppBEKs"></iframe>
+</div>
+<br>
+<div class="jumbotron"><h2>CONTACT AGENT</h2>
+ <div class="text-center vd_info-parent"> <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" class="img-circle"> 
+<p>Eric Thomas</p>
+ </div>
+  <h5><div class="mgtp-20">
+                      <table class="table table-striped table-hover">
+                        <tbody>
+                          <tr> 
+                           <h5> <td>User Rating</td>
+                            <td><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></td>
+                          </tr>
+                            </tbody>
+                      </table> </div> </h5>
+
+<form class="form-horizontal" role="form" method="post" action="</bid">
+    <div class="form-group">
+     <label for="Bid" class="col-sm-2 control-label"></label>
+     
+
+ <h5><input type="text" class="form-control" id="bidvalue" name="bidvalue"  placeholder="First Name" value=""/><br>
+<input type="text" class="form-control" id="bidvalue" name="bidvalue"  placeholder="Last Name" value=""/><br>
+<input type="text" class="form-control" id="bidvalue" name="bidvalue"  placeholder="Email Address" value=""/><br>
+<input type="text" class="form-control" id="bidvalue" name="bidvalue"  placeholder="Phone Number" value=""/><br>
+<input type="text" class="form-control-Message" id="bidvalue" name="bidvalue"  placeholder="Brief Message" value=""/><br>
+
+ <div class="col-sm-10 col-sm-offset-2">
+        <h5>  <input id="submit" name="submit" type="submit" value="BID" class="btn btn-primary"/> </h5>
+      </div> 
+
+      </h5>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+        <div class="carousel slide" id="screenshot-carousel" data-ride="carousel" style="width: 50%; margin-left: 10px" >
           <ol class="carousel-indicators">
             <li data-target="#screenshot-carousel" data-slide-to="0" class="active"></li>
             <li data-target="#screenshot-carousel" data-slide-to="1"></li>
@@ -48,29 +94,29 @@
           </ol>
           <div class="carousel-inner">
             <div class="item active">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Brock_House.JPG" alt="Text of the image" height="500px" width="500px">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/b/bb/Brock_House.JPG" alt="Text of the image">
               <div class="carousel-caption">
                 <h3>Highway heading</h3>
                 <p>This is the caption</p>
               </div>
             </div>
             <div class="item">
-              <img src="https://upload.wikimedia.org/wikipedia/en/8/8f/Colorful_house_in_the_town_of_Appenzell.JPG" alt="Text of the image" height="500px" width="500px">
+              <img src="https://upload.wikimedia.org/wikipedia/en/8/8f/Colorful_house_in_the_town_of_Appenzell.JPG" alt="Text of the image">
               <div class="carousel-caption">
                 <h3>River heading</h3>
                 <p>This is the caption</p>
               </div>
             </div>
             <div class="item">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Edward_Gorey_House,_Yarmouth_Port_MA.jpg" alt="Text of the image" height="500px" width="500px" position="center" margin="auto">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Edward_Gorey_House,_Yarmouth_Port_MA.jpg" alt="Text of the image">
               <div class="carousel-caption">
                 <h3>Street heading</h3>
                 <p>This is the caption</p>
               </div>
             </div>
             <div class="item">
-              <img src="img/3011394376_8306820abc_o.jpg" alt="Text of the image">
-              <div class="carousel-caption" height="500px" width="500px">
+              <img src="http://www.nps.gov/anti/planyourvisit/images/Pry-House.jpg" alt="Text of the image">
+              <div class="carousel-caption">
                 <h3>Painting heading</h3>
                 <p>This is the caption</p>
               </div>
@@ -84,154 +130,134 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </div><!-- End Carousel -->
-
-    </section>
+   </div> </section>
   </div>
-      <div class="jumbotron" id="details">
-  <div class="page-header" id="feedback">
-          <h2>Details</h2>
-        </div>
+<br>
+
+
+
+
+  <div class="col-md-6">
+  <div class="jumbotron">Details</div>
+        
+  <div class="jumbotron" >
    <div class="row">
+
           <div class="col-md-4">
-            <blockquote>
-              <p>Amenities Nearby</p>
+          <blockquote>
+             <p><h6>Amenities Nearby</p>
               <footer>Park, Public Transit, Schools</footer>
-            </blockquote>
+          </h6> </blockquote>
           </div>
+
           <div class="col-md-4">
             <blockquote>
-              <p>Total Parking Spaces</p>
+              <p><h6>Total Parking Spaces</p>
               <footer>4</footer>
-            </blockquote>
+           </h6> </blockquote>
           </div>
+
           <div class="col-md-4">
             <blockquote>
-              <p>Bedrooms</p>
-              <footer>3</footer>
-            </blockquote>
-          </div>
-        </div><!-- End row -->
-      </section>
+              <p><h6>Bedrooms</p>
+              <br><footer>3</footer>
+           </h6> </blockquote> 
+         </div>
+
+   </div>
   </div>
+  
+ 
+     
 
-  <div class="jumbotron" id="buildings">
- <div class="page-header" id="feedback">
-          <h2>Buildings</h2>
-        </div>
 
-   <div class="row">
+
+         
+    
+  <div class="jumbotron">Buildings</div>
+      
+     <div class="jumbotron" >
+     <div class="row">
+
           <div class="col-md-4">
             <blockquote>
-              <p>Basement Type</p>
+              <p><h6>Basement Type</p>
               <footer>Full (finished)</footer>
-              <br><p>Cooling</p>
+              <br><p><h6>Cooling</p>
               <footer>Central Air Conditioning</footer>
-              <br><p>Heating Type</p>
+              <br><p><h6>Heating Type</p>
               <footer>Forced Air</footer>
             </blockquote>
           </div>
+
           <div class="col-md-4">
             <blockquote>
-              <br><p>Exterior Finish</p>
+              <p><h6>Exterior Finish</p>
               <footer>Aluminium Siding, Brick</footer>
-              <br><p>Style</p>
+              <p><h6>Style</p>
               <footer>Detached</footer>
             </blockquote>
           </div>
+
           <div class="col-md-4">
             <blockquote>
-              <p>Bedrooms</p>
+              <p><h6>Bedrooms</p>
               <footer>3</footer>
-              <br><p>Heating Fuel</p>
+              <br><p><h6>Heating Fuel</p>
               <footer>Natural Gas </footer>
-            </blockquote>
-          </div>
-        </div><!-- End row -->
-</div>
-      <div class="jumbotron" id="rooms">
-       <div class="page-header" id="feedback">
-          <h2>Rooms</h2>
-        </div>
-   <div class="row">
+            </h6></blockquote>
+         </div> 
+
+       </div></div>
+    
+      
+      
+   
+  <div class="jumbotron">Rooms</div>
+        
+   <div class="jumbotron"> 
+    <div class="row">
+
           <div class="col-md-4">
             <blockquote>
-              <p>Level</p>
+              <p><h6>Level</p>
               <footer>Second Level</footer>
               <br><br><br><br><footer>Lower Level</footer>
-              <br><footer>Main Level</footer>
+              <br><br><footer>Main Level</footer>
             </blockquote>
           </div>
+
           <div class="col-md-4">
             <blockquote>
-              <br><p>Type</p>
+              <p><h6>Type</p>
               <footer>Master Bedroom</footer>
               <footer>Bedroom 2</footer>
               <footer>Bedroom 3</footer>
-              <br><footer>Recreational, Games room</footer>
-              <br><br><footer>Living room</footer>
+              <br><br><footer>Recreational, Games room</footer>
+              <br><footer>Living room</footer>
               <footer>Dining room</footer>
               <footer>Kitchen</footer>
               <footer>Family room</footer>
             </blockquote>
           </div>
+
           <div class="col-md-4">
             <blockquote>
-              <p>Dimensions</p>
-              <br><footer>3.96 m x 3.5 m</footer>
+              <p><h6>Dimensions</p>
+              <footer>3.96 m x 3.5 m</footer>
               <footer>3.96 m x 3.5 m</footer>
               <footer>3.05 m x 2.9 m</footer>
-              <br><footer>5.48 m x 2.89 m</footer>
+              <br><br><footer>5.48 m x 2.89 m</footer>
               <br><br><footer>3.35 m x 2.89 m</footer>
               <footer>4.88 m x 4.27 m</footer>
               <footer>3.5 m x 3.38 m</footer>
               <footer>9.75 m x 5.18 m</footer>
-            </blockquote>
-          </div>
+            </blockquote></div>
+          
+          </div></div>
         </div><!-- End row -->
-      </section>
-    </div>
-    </div><!--End Container-->
-  
-    </div><!--End Container-->
-<div class="jumbotron" id="rooms">
-             
-              
-            
-  <form class="form-horizontal" role="form" method="post" action="<%= home._id %>/bid">
-    <div class="form-group">
-      
-        <label for="Bid" class="col-sm-2 control-label">BID</label>
-        <div class="col-sm-10">
-             <p>Highest Bid is <%= home.highestbidvalue %></p>
-        </div>
-    </div>
-    <div class="form-group">
 
-        <label for="Bid" class="col-sm-2 control-label">BID</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" id="bidvalue" name="bidvalue" placeholder="Enter Your Bid" value="">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-10 col-sm-offset-2">
-            <input id="submit" name="submit" type="submit" value="Send" class="btn btn-primary">
-        </div>
-    </div>
-</form>
-</div>
+
 
 </body>
-<%if (user== "ADMIN") { %>
-<div class="jumbotron" id="rooms">
-  <h2>This house is <%= home.publicTrue%></h2>
-  <form action = "/admin/verify/<%= home._id%>/true" method = "post">
-        <input type="submit" name="setTrue" value="setTrue" />
-  </form>
-   <form action = "/admin/verify/<%= home._id%>/false" method = "post">
-        <input type="submit" name="setFalse" value="setFalse" />
-  </form>
-
-</div>
-
-<% } %>
 </html>

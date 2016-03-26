@@ -12,7 +12,18 @@
               <li>Last Name ---> <%= user.lastName %></li>
               <img src=/<%= user.photopath%> height="200px" width="200px" >
             </ul>
+
               <body>
+      <form id="uploadForm"
+          enctype="multipart/form-data"
+          action="/uploadphoto"
+          method="post">
+      <input type="file" name="userPhoto" />
+      <input type="submit" value="Upload Image" name="submit">
+      <span id = "status"></span>
+    </form>
+  </body>
+   <!--           <body>
                 <div class="jumbotron">
       <form id="uploadForm"
           enctype="multipart/form-data"
@@ -20,11 +31,11 @@
           method="post">
       <input type="file" name="path" />
       <input type="submit" value="Upload Image" name="submit">
- <!--      <input id="input-24" name="input24[]" type="file" multiple class="file-loading"> -->
+<input id="input-24" name="input24[]" type="file" multiple class="file-loading"> 
       <span id = "status"></span>
     </form>
   </div>
-  </body>
+  </body> -->
   <script>
   $(document).ready(function() {
 
