@@ -28,6 +28,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
   <style type="text/css">
   body {
+    position: relative;
+     position: relative;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
     background: #f2f2f2;
   background-image: url();
   background-position:none;
@@ -35,6 +41,27 @@ google.maps.event.addDomListener(window, 'load', initialize);
   background-repeat:no-repeat;
   background-size:cover;
   }
+  .demo {
+  margin: 0 auto;
+  padding-top: 64px;
+  max-width: 640px;
+  width: 94%;
+}
+
+.demo h1 {
+  margin-top: 0;
+}
+
+html { 
+
+height:100%;
+margin: 0;
+padding:0;
+}
+
+/**
+ * Footer Styles
+ */
 h5{
 background-color: #F0F8FF;
 margin-left: 50px;
@@ -173,15 +200,39 @@ div.absolute {
     width: 490px;
     height: 120px;
 
+}
 
-} 
+#wrapper {
+
+min-height: 10%;
+position:relative;
+
+}
+
+#footer {
+  background-color: #222;
+  border-color: #080808;
+  position: absolute;
+  width: 100%;
+  right: 0;
+  bottom: -50cm;
+  left: 0;
+  padding: 1rem;
+  
+}
+#footer p {
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 13px 0px 0px 0px 0px;
+}
 </style>
 </head>
 <body>
   
   
-
-
+<div id="wrapper" class="clearfix">
 
 <!-- Navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
@@ -298,6 +349,16 @@ div.absolute {
     </div>
 </div>
 
+
+<div id="footer">
+
+  <p>Created by: Arjun Mahendran, Emmanuel Oppong, Gurpreet Jhandi</p>
+  <p>Contact Information: <a href="mailto:admin@jannat.com">admin@jannat.com</a>.</p>
+
+
+</div>
+
+</div>
 
 </body>
 </html>
