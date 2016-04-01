@@ -6,6 +6,8 @@ var Bid = require('../models/bid');
 var passport = require('passport');
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
+var multer = require('multer');
+var util = require('util');
 
 // geocoder
 var geocoderProvider = 'google';
@@ -22,6 +24,17 @@ var extra = {
 
 var geocoder = require('node-geocoder')(geocoderProvider, httpAdapter, extra);
 
+var storage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        callback(null, './public/uploads');
+    },
+    filename: function(req, file, callback) {
+        callback(null, req.user._id + '-' + Date.now() + '.' + file.originalname.split(/[. ]+/).pop());
+    }
+});
+
+var uploadMulti = multer({ storage: storage }).array('userPhoto', 4);
+
 var isAuthenticated = function(req, res, next) {
     // if user is authenticated in the session, call the next() to call the next request handler 
     // Passport adds this method to request object. A middleware is allowed to add properties to
@@ -36,16 +49,16 @@ var isAuthenticated = function(req, res, next) {
 //Mail function 
 var sendMail = function(homeID) {
     // Not the movie transporter!
-    var houseid =homeID;
+    var houseid = homeID;
     console.log(homeID);
-    var text = 'New Home has been created http://localhost:3000/homes/show/'+ houseid ;
+    var text = 'New Home has been created http://localhost:3000/homes/show/' + houseid;
     var mailOptions = {
-    from: 'arjunmahen13@gmail.com', // sender address
-    to: 'eroppong@gmail.com, gjhandi@ryerson.ca, arjun.mahendran@ryerson.ca', // list of receivers
-    subject: 'From EDP Server', // Subject line
-    text: text //, // plaintext body
-    // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
-};
+        from: 'arjunmahen13@gmail.com', // sender address
+        to: 'eroppong@gmail.com, gjhandi@ryerson.ca, arjun.mahendran@ryerson.ca', // list of receivers
+        subject: 'From EDP Server', // Subject line
+        text: text //, // plaintext body
+            // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+    };
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
@@ -53,21 +66,19 @@ var sendMail = function(homeID) {
             pass: '1234Soccer' // Your password
         }
     });
-    transporter.sendMail(mailOptions, function(error, info){
+    transporter.sendMail(mailOptions, function(error, info) {
         console.log("done here 2");
-    if(error){
-        console.log("done here 3");
-        console.log(error);
-        res.json({yo: 'error'});
-    }else{
-        console.log("done here 4");
-        console.log('Message sent: ' + info.response);
-    };
-});
+        if (error) {
+            console.log("done here 3");
+            console.log(error);
+            res.json({ yo: 'error' });
+        } else {
+            console.log("done here 4");
+            console.log('Message sent: ' + info.response);
+        };
+    });
     console.log("done here 1");
-    };
-
-
+};
 
 
 /* GET login page. */
@@ -86,78 +97,140 @@ router.get('/new', isAuthenticated, function(req, res) {
 
 /* GET login page. */
 router.post('/new', isAuthenticated, function(req, res) {
-    var newHome = new Home();
 
-    var search = req.param('address') + ' ' + req.param('city') + ' ' + req.param('province');
+    uploadMulti(req, res, function(err) {
+        if (err) {
+            return res.send("Error uploading file");
+        } else {
+            var newHome = new Home();
 
-    geocoder.geocode(search, function(err, result) {
-        geocodedresult = result;
-        console.log(geocodedresult[0].administrativeLevels.level2short);
-        console.log(geocodedresult[0].longitude);
-        var output = geocodedresult[0].latitude;
-        output = output + ' ';
-        output = output + geocodedresult[0].longitude;
-        var lg = geocodedresult[0].longitude;
-        var lt = geocodedresult[0].latitude;
+            var search = req.body.address + ' ' + req.body.city + ' ' + req.body.province;
+
+            console.log("search results: " + search);
+
+            console.log("1: " + req.param('userPhoto'));
+            geocoder.geocode(search, function(err, result) {
+                geocodedresult = result;
 
 
+                console.log(" DEBUGGERRRRR: req.files");
+                console.log(util.inspect(req.files, { showHidden: false, depth: null }));
+                console.log(" DEBUGGERRRRR rreq.file");
+                console.log(util.inspect(req.file, { showHidden: false, depth: null }));
+                console.log(" DEBUGGERRRRR req.file and req.files");
 
-        // set the user's local credentials
-        newHome.userid = req.user._id;
-        newHome.address = geocodedresult[0].formattedAddress;
-        newHome.city = req.param('city');
-        newHome.region = geocodedresult[0].administrativeLevels.level2short;
-        newHome.province = req.param('province');
-        newHome.price = req.param('price');
-        newHome.squareFoot = req.param('squareFoot');
-        newHome.rooms = req.param('rooms');
-        newHome.homeType = req.param('homeType');
-        newHome.saleRent = req.param('saleRent');
-        newHome.bedrooms = req.param('bedrooms');
-        newHome.bathrooms = req.param('bathrooms');
-        newHome.bidding = req.param('BiddingActive');
-        newHome.bids.bidvalue = 0;
-        newHome.bids.userid = '000';
-        newHome.highestbidid = '000';
-        newHome.publicTrue = false;
-        newHome.loc = [lg, lt];
+                console.log("3: " + req.files);
+
+                console.log("4: " + req);
+
+                console.log(geocodedresult[0].longitude);
+                var output = geocodedresult[0].latitude;
+                output = output + ' ';
+                output = output + geocodedresult[0].longitude;
+                var lg = geocodedresult[0].longitude;
+                var lt = geocodedresult[0].latitude;
 
 
 
-        newHome.save(function(err, newHome) {
-            if (err) {
-                console.log(err);
-                return next(err);
-            }
-            //res.json(201, newHome);
-            var email = req.user.email;
+                // set the user's local credentials
+                newHome.userid = req.user._id;
+                newHome.address = geocodedresult[0].formattedAddress;
+                newHome.city = req.body.city;
+                newHome.region = geocodedresult[0].administrativeLevels.level2short;
+                newHome.province = req.body.province;
+                newHome.price = req.body.price;
+                newHome.squareFoot = req.body.squareFoot;
+                newHome.rooms = req.body.rooms;
+                newHome.homeType = req.body.homeType;
+                newHome.saleRent = req.body.saleRent;
+                newHome.bedrooms = req.body.bedrooms;
+                newHome.bathrooms = req.body.bathrooms;
+                newHome.bidding = req.body.BiddingActive;
+                newHome.bids.bidvalue = 0;
+                newHome.bids.userid = '000';
+                newHome.highestbidid = '000';
+                newHome.publicTrue = false;
+                newHome.loc = [lg, lt];
+                // newHome.photopaths = req.param('userPhoto');
+                
+                for (var j = 0; j < req.files.length; j++) { // inner loop
 
-            var query = {
-                "email": email
-            };
+                    console.log(req.files[j]);
+                    console.log(req.files[j].path);
+                    var pathstr = req.files[j].path;
 
-            User.findOneAndUpdate(query, {
-                    $push: {
-                        "homes": newHome._id                    }
-                },{
-                            upsert: true
-                        }, function(err, doc) {
-                            if (err)
-                                return res.send(500, {
-                                    error: err
-                                });
-                            else
-                            // return res.send("Successfully Saved");
-                            //res.json(doc);
-                                console.log(newHome._id);
+
+                    newHome.photopaths.push(pathstr.slice(6)) ;
+                }
+                console.log(newHome.photopaths);
+
+                newHome.save(function(err, newHome) {
+                    if (err) {
+                        console.log(err);
+                        return next(err);
+                    }
+                    //res.json(201, newHome);
+                    var queryHome = newHome
+
+                    var query = {
+                        "_id": newHome._id
+                    };
+
+                    Home.findByIdAndUpdate(queryHome, {
+                        $pushAll: {
+
+                        }
+                    }, {}, function(err, savedModel) {
+                        if (err) {
+                            return res.send(500, {
+                                error: err
+                            });
+
+                        } else {
+
+                            var email = req.user.email;
+
+                            var query = {
+                                "email": email
+                            };
+
+                            User.findOneAndUpdate(query, {
+                                $push: {
+                                    "homes": newHome._id
+                                }
+                            }, {
+                                upsert: true
+                            }, function(err, doc) {
+                                if (err)
+                                    return res.send(500, {
+                                        error: err
+                                    });
+                                else
+                                // return res.send("Successfully Saved");
+                                //res.json(doc);
+
+                                    console.log(newHome._id);
                                 sendMail(newHome._id);
                                 res.render('thankyouHome');
 
-                        });
-            
-        });
 
+
+
+                            });
+
+                        }
+                    });
+
+
+
+
+                });
+
+            });
+        }
     });
+
+
 });
 
 /* GET login page. */
@@ -192,15 +265,15 @@ router.get('/search', function(req, res) {
     var sqft = req.param('squareFoot');;
     var bidding = req.param('BiddingActive');
 
-    console.log(area); 
+    console.log(area);
     console.log(homeType);
-     console.log(saleRent); 
-     console.log(greaterThanPrice);
-     console.log(lessThanPrice); 
-     console.log(numOfBedrooms); 
-     console.log(numOfBathrooms);
-     console.log(sqft);
-     console.log(bidding);
+    console.log(saleRent);
+    console.log(greaterThanPrice);
+    console.log(lessThanPrice);
+    console.log(numOfBedrooms);
+    console.log(numOfBathrooms);
+    console.log(sqft);
+    console.log(bidding);
 
     geocoder.geocode(area, function(err, result) {
 
@@ -222,39 +295,39 @@ router.get('/search', function(req, res) {
             maxDistance /= 6371;
 
             // get coordinates [ <longitude> , <latitude> ]
-            
-            if(result.length == 0 |result == undefined ){
-                    var coords = [0,0];
-                    maxDistance = maxDistance*1000;
-            }else {
+
+            if (result.length == 0 | result == undefined) {
+                var coords = [0, 0];
+                maxDistance = maxDistance * 1000;
+            } else {
                 console.log(result);
                 var coords = [];
-            coords[0] = geocodedresult[0].longitude;
-            coords[1] = geocodedresult[0].latitude;
+                coords[0] = geocodedresult[0].longitude;
+                coords[1] = geocodedresult[0].latitude;
 
-            console.log(coords[1]);
+                console.log(coords[1]);
             }
             // find a location
             Home.find({
                 loc: {
                     $near: coords,
                     $maxDistance: maxDistance
-                 },
+                },
                 squareFoot: {
-                    $gt: sqft-1
+                    $gt: sqft - 1
                 },
                 price: {
-                    $gt: greaterThanPrice -1,
-                     $lt: lessThanPrice+1
-                 },
-                 bidding: bidding,
-                 saleRent: saleRent,
-                 homeType: homeType,
-                 bedrooms: {
-                     $gt: numOfBedrooms-1
-                 },
+                    $gt: greaterThanPrice - 1,
+                    $lt: lessThanPrice + 1
+                },
+                bidding: bidding,
+                saleRent: saleRent,
+                homeType: homeType,
+                bedrooms: {
+                    $gt: numOfBedrooms - 1
+                },
                 bathrooms: {
-                    $gt: numOfBathrooms-1
+                    $gt: numOfBathrooms - 1
                 }
                 // type: "condoApt",
                 // hasPhotots: false,

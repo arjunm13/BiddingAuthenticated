@@ -10,11 +10,6 @@ var mongoose = require('mongoose');
 // Connect to DB
 mongoose.connect(dbConfig.url);
 
-var routes = require('./routes/index');
-var homes = require ('./routes/homes');
-var admin = require ('./routes/admin');
-
-
 var app = express({});
 
 // view engine setup
@@ -46,6 +41,11 @@ var initPassport = require('./passport/init');
 initPassport(passport);
 
 var userrouter = require('./routes/users')(passport);
+
+var routes = require('./routes/index');
+var homes = require ('./routes/homes');
+var admin = require ('./routes/admin');
+
 app.use('/users', userrouter);
 app.use('/', routes);
 app.use('/homes', homes);

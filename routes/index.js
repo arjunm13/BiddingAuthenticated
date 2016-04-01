@@ -38,6 +38,8 @@ var upload = multer({
     storage: storage
 }).single('userPhoto');
 
+var uploadMulti = multer({ storage : storage }).array('userPhoto',2);
+
 var isAuthenticated = function(req, res, next) {
     // if user is authenticated in the session, call the next() to call the next request handler 
     // Passport adds this method to request object. A middleware is allowed to add properties to
@@ -75,7 +77,7 @@ function handleSayHello(req, res, homeID) {
     console.log("done here 1");
     };
 
-var text = 'Killa KAM Sent me';
+var text = 'Hey, you are nice';
 
 var mailOptions = {
     from: 'arjunmahen13@gmail.com', // sender address
@@ -121,9 +123,9 @@ router.get('/userPage', function(req, res) {
     res.render('userPage');
 });
 /* GET login page. */
-router.get('/agentNew', function(req, res) {
+router.get('/multi', function(req, res) {
     // Display the Login page with any flash message, if any
-    res.render('agentnew');
+    res.render('multiUpload');
 });
 
 /* GET login page. */
@@ -168,13 +170,12 @@ router.post('/uploadphoto', isAuthenticated ,function(req,res){
             console.log(extension);
             console.log(req.file.path);
 
-        var query = { 'username' :req.user.username};
+        var query = { 'username' :req.user.username };
         var newUser = new User();
 
         var pathstr = req.file.path;
         newUser.photopath = pathstr.slice(7);
 
-        //newUser.photopath = newUser.photopath.replace('/path', '')
 
         User.findOneAndUpdate(query, {photopath : newUser.photopath}, {upsert:true}, function(err, doc){
             if(err)
@@ -185,5 +186,7 @@ router.post('/uploadphoto', isAuthenticated ,function(req,res){
 
     });
 });
+
+
 
 module.exports = router;

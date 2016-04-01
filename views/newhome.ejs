@@ -23,7 +23,10 @@
 
 <h2 align ="center" style="font-family:sans-serif;"> PLEASE ENTER HOUSE DETAILS BELOW</h2>
 <div class="row">
-  <form role="form" action="/homes/new" method="POST" >
+
+        <form id="uploadForm" enctype="multipart/form-data" action="/homes/new" method="post">
+
+<!--   <form role="form" action="/homes/new" method="POST" > -->
     <div class="container">
 
   <div class="form-group">
@@ -143,6 +146,17 @@
                     </div>
 
 </div>
+
+<div class="col-sm-12">
+ <div class="form-group">
+                      <label for="files">Select up to 4 Images</label>
+                      <input type="file" name="userPhoto" multiple />
+                   
+                    </div>
+
+</div>
+
+
 
 
 </div>

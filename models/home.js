@@ -35,6 +35,6 @@ module.exports = mongoose.model('Home',{
 	highestbidid : String,
 	highestbidvalue : Number,
 	publicTrue : Boolean,
-	photopath: String
+	photopaths: [String]
 
 });
