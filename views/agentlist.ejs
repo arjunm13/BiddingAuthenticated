@@ -13,48 +13,17 @@
 
       <div class="col-md-4">
         <div>
-          <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" alt="Texto Alternativo" class="img-circle img-thumbnail">
+          <div class="text-center vd_info-parent"> <img src="/<%= agent.photopath %>" name="aboutme" width="140" height="140" class="img-circle"> </div>
+          <!-- <img src="/<%= agent.photopath %>" alt="Texto Alternativo" class="img-circle img-thumbnail" height="20%" width="40%" > -->
           <h2><%= agent.firstName %> <%= agent.lastName %></h2>
 
           <p><%= agent.company %></p>
-          <a><h4 href="#myModal<%= agent._id %>"><img src="/img/Directions.png" height="24px" width="24px" text-align="left" data-toggle="modal" data-target="#myModal<%= agent._id %>"/> <%= agent.address%></h4></a>
-          <h4><img src="/img/forSale.png" height="35px" width="35px" text-align="left"/> $<%= agent.lastName %></h4>
+          <h4 href="#myModal<%= agent._id %>"> <%= agent.address%></h4>
+          
           <a href="/users/showagent/<%= agent._id %>" class="btn btn-primary" title="See more">  More Info »</a>
         </div>
       </div>
-      <div class="modal fade" id="myModal<%= agent._id %>">
-  <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:red">×</button>
-        </div>
-<!--         <div class="modal-footer">
-          <a href="#" data-dismiss="modal" class="btn">Close</a>
-          <a href="#" class="btn btn-primary">Log-in</a>
-        </div> -->
-   <!--  <div class="container"> -->
-     <div class="row-fluid">
-     
-            <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/place?q=<%= agent.address %>
-      &zoom=17
-      &key=AIzaSyCKhfyQAD8hLWF1GSsTB5E3WzcL2ppBEKs"></iframe>
-       
-        
-        <div class="span4" text-align="center">
-            <h2><%= agent.address %></h2>
-            <address>
-                <strong><%= agent.firstName %></strong><br>
-               <%= agent.company %><br>
-                Canada<br>
-                <abbr title="Phone">P:</abbr> 01234 567 890
-            </address>
-<!--         </div>-->
-      </div>
- <!--  </div>  -->
-</div>
-    </div>
-</div>
-</div>
+
 <% if((i + 1) % 3 === 0 && i!=2) { %>
           </div>
       <% } %>

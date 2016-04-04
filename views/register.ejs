@@ -1,11 +1,5 @@
 <% include navbar.ejs %>
 <body>
-
-
-
-
-
-
 <h1 class="text-center">Create your Account</h1>
 <br>
 <br>
@@ -13,7 +7,8 @@
 <div class="container-fluid ">
 <div class="row">
 <div class=" col-xs-12 col-sm-12 col-md-4 col-lg-4">
-<div class="jumbotron">
+<div class="jumbotron" style="background: rgb(0, 153, 204); /* This is for ie8 and below */
+   background: rgba(0, 153, 204, 1.0); color: #FFFFFF;">
 <!-- <form class="form-horizontal" action="/users/signup" method="POST"> -->
 
           <form class="form-horizontal" action="/users/signup" method="POST" >
@@ -206,8 +201,8 @@
 
 </div>
 <div class="col-sm-6 col-md-8 col-lg-8">
-  <div class="jumbotron">
-<img class="img-responsive" src="/img/Lovely-Armandale-House.jpg" width="100%" height="770px">
+  <div class="jumbotron" style="padding: 5px;">
+<img class="img-responsive" src="http://slaneymortgages.com/wp-content/uploads/2013/04/home-ownership_first-time-buyers.jpg" width="100%" height="770px">
 </div>
 </div>
 </div><!--container-fluid ends-->

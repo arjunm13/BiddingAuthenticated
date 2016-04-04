@@ -8,12 +8,12 @@
   <p class="lead text-center">I am a creative graphic designer focused on modern eye catching designs. I am not only the graphic designer! I can also do complete websites &amp; computer applications.</p> -->
 
   <div class="container" >
-    <div class="row stylish-panel">
+    <div class="row stylish-panel" height="500px">
       <% homes.forEach(function(home, i){ %>
 
       <div class="col-md-4">
         <div>
-          <img src="/img/home.jpg" alt="Texto Alternativo" class="img-circle img-thumbnail">
+          <img src="<%= home.photopaths[0] %>" height="271px" width="186px" alt="Texto Alternativo" class="img-circle img-thumbnail">
           <h2><%= home.homeType %></h2>
 
           <p><img src="/img/Blueprint.png" height="24px" width="24px" text-align="left"/> <%= home.squareFoot%>  | <img src="/img/Bed.png" height="24" width="24"/> <%= home.bathrooms%> ba | <img src="/img/Bathtub.png" height="24" width="24"/> <%= home.bedrooms%> bdr</p>

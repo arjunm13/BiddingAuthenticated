@@ -1,12 +1,12 @@
 <div class="container">
   <div class="col-md-12">
-  <div class="jumbotron" style="background: rgb(54, 0, 200); /* This is for ie8 and below */
-   background: rgba(128, 223, 255, 1.0); ">
+  <div class="jumbotron" style="background: rgb(0, 153, 204); /* This is for ie8 and below */
+   background: rgba(0, 153, 204, 1.0); color: #FFFFFF;">
 
    <style>
  .jumbotron {
 
-   color: #36292A;
+   color: #FFFFFF;
  background-color: #F0F8FF;
 border-radius: 10px;
 
@@ -28,7 +28,8 @@ padding: 10px;
                     <div class="form-group">
                       <label for="saleRent">Sale / Rent</label>
                       <select name="saleRent" class="form-control" value="">
-                        <option selected="selected" value="forSale">For Sale</option>
+                        <option selected="selected" value="Any">Any</option>
+                        <option value="forSale">For Sale</option>
                         <option value="forRent">For Rent</option>
                      
                       </select>
@@ -49,9 +50,10 @@ padding: 10px;
                   <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="form-group">
                       <label for="homeType">Home Type</label>
-                      <select name="homeType" class="form-control">
+                      <select name="homeType" class="form-control" value="">
+                        <option value="Any">Any</option>
                         <option value="Condo">Condo</option>
-                        <option selected="selected" value="detachedHouse">Detached-House</option>
+                        <option value="detachedHouse">Detached-House</option>
                         <option value="townHouse">Town House</option>
                         <option value="semi">semi-detached-house</option>
                         <option value="mansion">mansion</option>
@@ -96,10 +98,8 @@ padding: 10px;
 
                     </div>
                     <div class="form-group">
-                      <label for="BiddingActive">Bidding?</label>
-                      <select name="BiddingActive" class="form-control" value="true"/>
-                      <option value="true">Bidding</option>
-                      <option value="false">Non-Bidding</option>
+                      <label for="maxDistance">Distance</label>
+                      <input name="maxDistance" class="form-control" value="30"/>
                     </select>
                     </div>
                   </div> 

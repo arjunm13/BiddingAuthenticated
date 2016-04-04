@@ -39,6 +39,7 @@ module.exports = function(passport){
                         newUser.birthYear = req.param('birthYear');
                         newUser.address = req.param('address');
                         newUser.company = req.param('company');
+                        newUser.photopath = "uploads/profile.png"
 
 
                         console.log(newUser.username);

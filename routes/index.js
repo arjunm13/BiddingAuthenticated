@@ -19,8 +19,8 @@ var geocoderProvider = 'google';
 var httpAdapter = 'https';
 
 var extra = {
-    apiKey: 'AIzaSyBI5F7EZYenZ-CW4gukXeZMN8pAQC7me_Q', // for Mapquest, OpenCage, Google Premier 
-    formatter: null // 'gpx', 'string', ... 
+    apiKey: 'AIzaSyBI5F7EZYenZ-CW4gukXeZMN8pAQC7me_Q', // for Mapquest, OpenCage, Google Premier
+    formatter: null // 'gpx', 'string', ...
 };
 
 var geocoder = require('node-geocoder')(geocoderProvider, httpAdapter, extra);
@@ -41,7 +41,7 @@ var upload = multer({
 var uploadMulti = multer({ storage : storage }).array('userPhoto',2);
 
 var isAuthenticated = function(req, res, next) {
-    // if user is authenticated in the session, call the next() to call the next request handler 
+    // if user is authenticated in the session, call the next() to call the next request handler
     // Passport adds this method to request object. A middleware is allowed to add properties to
     // request and response objects
     if (req.isAuthenticated())
@@ -52,7 +52,7 @@ var isAuthenticated = function(req, res, next) {
 }
 
 
-//Mail function 
+//Mail function
 function handleSayHello(req, res, homeID) {
     // Not the movie transporter!
     var transporter = nodemailer.createTransport({
@@ -91,7 +91,7 @@ var mailOptions = {
 
 /* GET login page. */
 router.get('/sayHello', handleSayHello, function(req, res) {
-    
+
 });
 
 
@@ -100,7 +100,7 @@ router.get('/sayHello', handleSayHello, function(req, res) {
 /* GET login page. */
 router.get('/', function(req, res) {
     // Display the Login page with any flash message, if any
-    res.render('welcome');
+    res.redirect('/homes/homelist');
 });
 /* GET login page. */
 router.get('/bootleg', function(req, res) {
@@ -142,6 +142,12 @@ router.get('/test2', isAuthenticated, function(req, res) {
     });
 });
 
+router.get('/checklogin',function(req,res){
+  if (req.user)
+    res.send(true);
+  else
+    res.send(false);
+});
 
 
 router.get('/test', function(req, res) {
@@ -180,8 +186,8 @@ router.post('/uploadphoto', isAuthenticated ,function(req,res){
         User.findOneAndUpdate(query, {photopath : newUser.photopath}, {upsert:true}, function(err, doc){
             if(err)
                 return res.send(500, {error: err});
-            else 
-                return res.send("Successfully Saved");  
+            else
+                return res.redirect("/users/show");
         });
 
     });

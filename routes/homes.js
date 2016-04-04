@@ -152,7 +152,7 @@ router.post('/new', isAuthenticated, function(req, res) {
                 newHome.publicTrue = false;
                 newHome.loc = [lg, lt];
                 // newHome.photopaths = req.param('userPhoto');
-                
+
                 for (var j = 0; j < req.files.length; j++) { // inner loop
 
                     console.log(req.files[j]);
@@ -160,7 +160,7 @@ router.post('/new', isAuthenticated, function(req, res) {
                     var pathstr = req.files[j].path;
 
 
-                    newHome.photopaths.push(pathstr.slice(6)) ;
+                    newHome.photopaths.push(pathstr.slice(6));
                 }
                 console.log(newHome.photopaths);
 
@@ -234,7 +234,7 @@ router.post('/new', isAuthenticated, function(req, res) {
 });
 
 /* GET login page. */
-router.get('/homelist', isAuthenticated, function(req, res) {
+router.get('/homelist', function(req, res) {
 
     Home.find({
         "publicTrue": true
@@ -264,6 +264,8 @@ router.get('/search', function(req, res) {
     var numOfBathrooms = req.param('numOfBathrooms');
     var sqft = req.param('squareFoot');;
     var bidding = req.param('BiddingActive');
+    var maxDistance = req.param('maxDistance')*100;
+
 
     console.log(area);
     console.log(homeType);
@@ -288,7 +290,7 @@ router.get('/search', function(req, res) {
             var limit = 10;
 
             // get the max distance or set it to 8 kilometers
-            var maxDistance = 800;
+           // var maxDistance = 800;
 
             // we need to convert the distance to radians
             // the raduis of Earth is approximately 6371 kilometers
@@ -307,8 +309,9 @@ router.get('/search', function(req, res) {
 
                 console.log(coords[1]);
             }
-            // find a location
-            Home.find({
+
+
+            var query = {
                 loc: {
                     $near: coords,
                     $maxDistance: maxDistance
@@ -320,24 +323,26 @@ router.get('/search', function(req, res) {
                     $gt: greaterThanPrice - 1,
                     $lt: lessThanPrice + 1
                 },
-                bidding: bidding,
-                saleRent: saleRent,
-                homeType: homeType,
                 bedrooms: {
                     $gt: numOfBedrooms - 1
                 },
                 bathrooms: {
                     $gt: numOfBathrooms - 1
                 }
-                // type: "condoApt",
-                // hasPhotots: false,
-                // bedrooms: {
-                //     $size: 0
-                // }
+            };
+             // == new String("a").valueOf()
+             console.log(homeType);
+             var any = "Any";
 
-
-
-            }).limit(limit).exec(function(err, homes) {
+            if (homeType.toString() !== any.toString()) {
+                query["homeType"] = homeType;
+            }
+            if (saleRent.toString() !== any.toString()) {
+                query["saleRent"] = saleRent;
+            }
+            // find a location
+            console.log(query);
+            Home.find(query).limit(limit).exec(function(err, homes) {
                 if (err) {
                     return res.json(500, err);
                 }

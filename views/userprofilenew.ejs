@@ -1,0 +1,207 @@
+<% include navbar.ejs %>
+<link rel="stylesheet" href="/assets/css/agentPage.css">
+<div class="vd_content-section clearfix">
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="panel widget light-widget panel-bd-top">
+                  <div class="panel-heading no-title"> </div>
+                  <div class="panel-body">
+                    <div class="text-center vd_info-parent"> <img src="/<%= user.photopath %>" name="aboutme" width="140" height="140" class="img-circle"> </div>
+                    <div class="row">
+                    
+                    </div>
+                    <h2 class="font-semibold mgbt-xs-5"><%= user.firstName %> <%= user.lastName %></h2>
+                    <h4>Sales Engineer at Johnson Controls</h4>
+                    
+                  </div>
+                   <script>
+  $(document).ready(function() {
+
+     $('#uploadForm').submit(function() {
+     $("#status").empty().text("File is uploading...");
+
+        $(this).ajaxSubmit({
+
+            error: function(xhr) {
+                status('Error: ' + xhr.status);
+            },
+
+            success: function(response) {
+          console.log(response)
+          $("#status").empty().text(response);
+            }
+  });
+
+  return false;
+    });    
+});
+  </script>
+                <form id="uploadForm"
+          enctype="multipart/form-data"
+          action="/uploadphoto"
+          method="post">
+      <input type="file" name="userPhoto" />
+      <input type="submit" value="Upload Image" name="submit">
+      <span id = "status"></span>
+    </form>
+                </div>
+
+                <!-- panel widget -->
+                
+                <!-- panel widget --> 
+              </div>
+              <div class="col-sm-9">
+                <div class="tabs widget" >
+  <ul class="nav nav-tabs widget">
+    <li class="active"> <a data-toggle="tab" href="#profile-tab"> Profile <span class="menu-active"><i class="fa fa-caret-up"></i></span> </a></li>
+    <li> <a data-toggle="tab" href="#projects-tab"> Projects <span class="menu-active"><i class="fa fa-caret-up"></i></span> </a></li>    
+    
+  </ul>
+  <div class="tab-content" background-color="#1fae66">
+    <div id="profile-tab" class="tab-pane active">
+      <div class="pd-20">
+<div class="vd_info tr"> <a class="btn vd_btn btn-xs vd_bg-yellow"> <i class="fa fa-pencil append-icon"></i> Edit </a> </div>      
+        <h3 class="mgbt-xs-15 mgtp-10 font-semibold"><i class="icon-user mgr-10 profile-icon"></i> ABOUT</h3>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="row mgbt-xs-0">
+              <label class="col-xs-5 control-label">First Name:</label>
+              <div class="col-xs-7 controls"><%= user.firstName %></div>
+              <!-- col-sm-10 --> 
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row mgbt-xs-0">
+              <label class="col-xs-5 control-label">Last Name:</label>
+              <div class="col-xs-7 controls"><%= user.lastName %></div>
+              <!-- col-sm-10 --> 
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row mgbt-xs-0">
+              <label class="col-xs-5 control-label">User Name:</label>
+              <div class="col-xs-7 controls"><%= user.username %></div>
+              <!-- col-sm-10 --> 
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row mgbt-xs-0">
+              <label class="col-xs-5 control-label">Email:</label>
+              <div class="col-xs-7 controls"><%= user.email %></div>
+              <!-- col-sm-10 --> 
+            </div>
+          </div>
+           <div class="col-sm-6">
+            <div class="row mgbt-xs-0">
+              <label class="col-xs-5 control-label">Address:</label>
+              <div class="col-xs-7 controls">105 Rollingwood Drive</div>
+              <!-- col-sm-10 --> 
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row mgbt-xs-0">
+              <label class="col-xs-5 control-label">Country:</label>
+              <div class="col-xs-7 controls">Canada</div>
+              <!-- col-sm-10 --> 
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row mgbt-xs-0">
+              <label class="col-xs-5 control-label">City:</label>
+              <div class="col-xs-7 controls">Brampton</div>
+         
+              <!-- col-sm-10 --> 
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row mgbt-xs-0">
+              <label class="col-xs-5 control-label">Phone:</label>
+              <div class="col-xs-7 controls">647-219-1326</div>
+              <!-- col-sm-10 --> 
+            </div>
+          </div>
+        </div>
+        <hr class="pd-10">
+        <div class="row">
+          <div class="col-sm-7 mgbt-xs-20">
+            <h3 class="mgbt-xs-15 font-semibold"><i class="fa fa-file-text-o mgr-10 profile-icon"></i> WORK EXPERIENCE</h3>
+            <div class="content-list content-menu">
+              <ul class="list-wrapper">
+                <li class="mgbt-xs-10"> <span class="menu-icon vd_green"><i class="fa  fa-circle-o"></i></span> <span class="menu-text">Sales Engineer at Johnson Controls<span class="menu-info"><span class="menu-date"> - (November 2015 ~ Now)</span></span> </span> </li>
+                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text">Intern at Johnson Controls<span class="menu-info"><span class="menu-date"> - (June 2015 ~ August 2015)</span></span> </span> </li>
+                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text">Dispatch Operator at Trillium Hospital<span class="menu-info"><span class="menu-date"> - (May 2014 ~ August 2014)</span></span> </span> </li>
+                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text">Sales at Sales Company Ltd<span class="menu-info"><span class="menu-date"> - (March 2009 ~ February 2010)</span></span> </span> </li>
+              </ul>
+            </div>
+          </div>
+        
+        </div>
+        <!-- row -->
+        <hr class="pd-6">
+        <div class="row">
+    <div class="col-sm-6">
+<!--   <div class="container">
+  <div class="row" style="margin-top:40px;"> -->
+   <!--  <div class="col-md-5">
+ -->     
+        
+            <div class="row" id="post-review-box" style="display:none;">
+                <div class="col-md-12">
+                    <form accept-charset="UTF-8" action="/review" method="get">
+                        <input id="ratings-hidden" name="rating" type="hidden"> 
+                        <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
+        
+                        <div class="text-right">
+                            <div class="stars starrr" data-rating="0"></div>
+                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
+                            <span class="glyphicon glyphicon-remove"></span>Cancel</a>
+                            <button class="btn btn-success btn-lg" type="submit">Save</button>
+                        </div>
+                    </form>
+                </div>
+<!--             </div>
+        </div> 
+         
+    </div>-->
+  </div>
+</div>
+    <!--               <h3 class="mgbt-xs-15 font-semibold"><i class="fa fa-globe mgr-10 profile-icon"></i> ACTIVITY</h3>
+            <div class="">
+              <div class="content-list">
+                <div data-rel="scroll" class="mCustomScrollbar _mCS_6" style="overflow: hidden;"><div class="mCustomScrollBox mCS-light" id="mCSB_6" style="position: relative; height: 100%; overflow: hidden; max-width: 100%; max-height: 400px;"><div class="mCSB_container" style="position: relative; top: -8px;">
+                  <ul class="list-wrapper">
+                    <li> <span class="menu-icon vd_yellow"><i class="fa fa-suitcase"></i></span> <span class="menu-text"> Someone has give you a surprise <span class="menu-info"><span class="menu-date"> ~ 12 Minutes Ago</span></span> </span>  </li>
+                    <li> <span class="menu-icon vd_blue"><i class=" fa fa-user"></i></span> <span class="menu-text"> Change your user profile details <span class="menu-info"><span class="menu-date"> ~ 1 Hour 20 Minutes Ago</span></span> </span> </li>
+                    <li> <span class="menu-icon vd_red"><i class=" fa fa-cogs"></i></span> <span class="menu-text"> Your setting is updated <span class="menu-info"><span class="menu-date"> ~ 12 Days Ago</span></span> </span></li>
+                    <li>  <span class="menu-icon vd_green"><i class=" fa fa-book"></i></span> <span class="menu-text"> Added new article <span class="menu-info"><span class="menu-date"> ~ 19 Days Ago</span></span> </span>  </li>
+                    <li>  <span class="menu-icon vd_green"><img alt="example image" src="img/avatar/avatar.jpg"></span> <span class="menu-text"> Change Profile Pic <span class="menu-info"><span class="menu-date"> ~ 20 Days Ago</span></span> </span> </li>
+                    <li>  <span class="menu-icon vd_red"><i class=" fa fa-cogs"></i></span> <span class="menu-text"> Your setting is updated <span class="menu-info"><span class="menu-date"> ~ 12 Days Ago</span></span> </span>  </li>
+                    <li>  <span class="menu-icon vd_green"><i class=" fa fa-book"></i></span> <span class="menu-text"> Added new article <span class="menu-info"><span class="menu-date"> ~ 19 Days Ago</span></span> </span> </li>
+                    <li>  <span class="menu-icon vd_green"><img alt="example image" src="img/avatar/avatar.jpg"></span> <span class="menu-text"> Change Profile Pic <span class="menu-info"><span class="menu-date"> ~ 20 Days Ago</span></span> </span>  </li>
+                  </ul>
+                </div><div class="mCSB_scrollTools" style="position: absolute; display: block; opacity: 0;"><div class="mCSB_draggerContainer"><div class="mCSB_dragger" style="position: absolute; top: 7px; height: 352px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="position: relative; line-height: 352px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
+                <div class="closing text-center" style=""> <a href="#">See All Activities <i class="fa fa-angle-double-right"></i></a> </div>
+              </div>
+            </div>-->
+          </div> 
+          <!-- col-sm-7 --> 
+          
+          <!-- col-sm-7 -->           
+        </div>
+        <!-- row --> 
+      </div>
+      <!-- pd-20 --> 
+    </div>
+    <!-- home-tab -->
+ 
+        
+      </div>
+      <!-- pd-20 -->       
+   
+    
+  </div>
+  <!-- tab-content --> 
+</div>
+
+
+<!-- tabs-widget -->              </div>

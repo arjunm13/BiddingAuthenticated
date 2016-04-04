@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var Home = require('../models/home');
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
 
@@ -50,7 +51,7 @@ module.exports = function(passport) {
 
     /* GET Home Page */
     router.get('/show', isAuthenticated, function(req, res) {
-        res.render('showuser', { user: req.user });
+        res.render('userprofilenew', { user: req.user });
     });
 
     /* Handle Logout */
@@ -65,6 +66,12 @@ module.exports = function(passport) {
         req.logout();
         res.redirect('/users/loginPage');
     });
+
+    /* Handle Logout */
+    router.get('/newagent', function(req, res) {
+        res.render('createprof');
+    });
+
 
     /* Handle Logout */
     router.get('/showagent/:id', function(req, res) {
@@ -83,10 +90,21 @@ module.exports = function(passport) {
                 //     user: req.user.username,
                 //     home: homes
                 // });
-        		console.log(agents.firstName);
+                var agentID = agents._id
+
+                var homeQuery = {
+                    userid : agentID
+                }
+                Home.find(homeQuery, function(err, results){
+                    console.log(agents.firstName);
+                    console.log(results.userid);
                 res.render('agentFinal', {
-                	agent: agents
+                    agent: agents,
+                    homes: results
                 });
+
+                })
+        		
             }
 
         });
