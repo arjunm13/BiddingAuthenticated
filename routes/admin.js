@@ -17,7 +17,7 @@ var isAuthenticated = function(req, res, next) {
     // if user is authenticated in the session, call the next() to call the next request handler 
     // Passport adds this method to request object. A middleware is allowed to add properties to
     // request and response objects
-    if (req.isAuthenticated())
+    if (res.locals.login = req.isAuthenticated())
         return next();
     // if the user is not authenticated then redirect him to the login page
     res.render('welcome');
@@ -27,7 +27,10 @@ var isAuthenticated = function(req, res, next) {
 router.get('/', isAuthenticated, function(req, res) {
     // Display the Login page with any flash message, if any
     if (req.user.username == 'ADMIN') {
-        Home.find({}, function(err, homes) {
+        var query = {
+            publicTrue: false
+        };
+        Home.find(query, function(err, homes) {
             var homeMap = [];
 
             homes.forEach(function(home) {

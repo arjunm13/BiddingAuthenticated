@@ -1,175 +1,150 @@
-<% include profilelayout.ejs %>
+<% include navbar.ejs %>
+   <style >
+.carousel-inner > .item > img {
+  min-height: 500px;    /* Set slide height here */
 
-<!-- Gallery -->
-  <div class="container">
-    <section>
-      <div class="relative">
-      <div class="page-header" id="Sell">
-          <h4><%= home.address %></h4>
-        </div> 
+}
 
-        <div class="absolute">
-       
-<div class="jumbotron">
-        
-       
+.headerjumbo {
+  background-color: #FFFFFF;
+  padding: 15px;
+  text-align: center;
+   -moz-border-radius: 15px;
+  border-radius: 30px;
 
- <form class="form-horizontal" role="form" method="post" action="</bid">
-    <div class="form-group">
-      
-        <label for="Bid" class="col-sm-2 control-label"></label>
-        <div class="col-sm-10">
-             <p><h1>$<%= home.price %></h1>
-                  <h5>Highest Bid</h5>
-           </p>
-        
-   
-</div>
-</form> 
-       <input type="text" class="form-control" id="bidvalue" name="bidvalue"  placeholder="Enter Your Bid" value=""/>
+}
+.details {
+  background-color: #FFFFFF;
+  padding: 15px;
+  text-align: center;
+   -moz-border-radius: 15px;
+  border-radius: 30px;
 
-         <div class="col-sm-10 col-sm-offset-2">
-        <h5>  <input id="submit" name="submit" type="submit" value="BID" class="btn btn-primary"/> </h5>
-      </div> 
-      </div></div> 
+}
+.bidding {
+  background-color: #FFFFFF;
+  padding: 15px;
+  text-align: center;
+   -moz-border-radius: 15px;
+  border-radius: 30px;
 
-  <div class="col-md-12"><div class=google>
-
-  <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/place?q=105 Rollingwood Drive, Brampton, ON
-      &zoom=17
-      &key=AIzaSyCKhfyQAD8hLWF1GSsTB5E3WzcL2ppBEKs"></iframe>
-</div>
+}
+</style>
 <br>
-<div class="jumbotron"><h2>CONTACT AGENT</h2>
- <div class="text-center vd_info-parent"> <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" class="img-circle"> 
-<p>Eric Thomas</p>
- </div>
-  <h5><div class="mgtp-20">
-                      <table class="table table-striped table-hover">
-                        <tbody>
-                          <tr> 
-                           <h5> <td>User Rating</td>
-                            <td><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></td>
-                          </tr>
-                            </tbody>
-                      </table> </div> </h5>
+ <div class="col-md-12">
+   <div class="jumbotron headerjumbo"><h2><%= home.address %></h2>
+    </div></div>
+   <div class="container-fluid" >
+  
+  <div class="row" background="#f2f2f2">
+    
 
-<form class="form-horizontal" role="form" method="post" action="</bid">
-    <div class="form-group">
-     <label for="Bid" class="col-sm-2 control-label"></label>
-     
+<div class="col-md-8">
+<div class="container-fluid" >
+  
+    
+       <div class="carousel slide" id="carousel-716136">
+        <ol class="carousel-indicators">
+          <li class="active" data-slide-to="0" data-target="#carousel-716136">
+          </li>
+          <li data-slide-to="1" data-target="#carousel-716136">
+          </li>
+          <li data-slide-to="2" data-target="#carousel-716136">
+          </li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item active">
+            <img alt="Carousel Bootstrap First" width="100%" height="100%" src="<%= home.photopaths[0] %>" />
+            <div class="carousel-caption">
+              <h4>
+                First Thumbnail label
+              </h4>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <img alt="Carousel Bootstrap Second" width="100%" height="100%" src="<%= home.photopaths[1] %>" overflow="hidden" />
+            <div class="carousel-caption">
+              <h4>
+                Second Thumbnail label
+              </h4>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <img alt="Carousel Bootstrap Third" width="100%" height="100%" src="<%= home.photopaths[0] %>" />
+            <div class="carousel-caption">
+              <h4>
+                Third Thumbnail label
+              </h4>
+              <p>
+                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+              </p>
+            </div>
+          </div>
+        </div> <a class="left carousel-control" href="#carousel-716136" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-716136" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+    </div>
+    <br>
+     <div class="col-md-12">
 
- <h5><input type="text" class="form-control" id="bidvalue" name="bidvalue"  placeholder="First Name" value=""/><br>
-<input type="text" class="form-control" id="bidvalue" name="bidvalue"  placeholder="Last Name" value=""/><br>
-<input type="text" class="form-control" id="bidvalue" name="bidvalue"  placeholder="Email Address" value=""/><br>
-<input type="text" class="form-control" id="bidvalue" name="bidvalue"  placeholder="Phone Number" value=""/><br>
-<input type="text" class="form-control-Message" id="bidvalue" name="bidvalue"  placeholder="Brief Message" value=""/><br>
-
- <div class="col-sm-10 col-sm-offset-2">
-        <h5>  <input id="submit" name="submit" type="submit" value="SUBMIT" class="btn btn-primary"/> </h5>
-      </div> 
-
-      </h5>
-
-</div>
-
-
-
-
-  </div>
-
+ <div class="jumbotron details">
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse1">+ Details</a>
+      </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <blockquote>
+                                <p>
+                                    <h6>Amenities Nearby</h6> </p>
+                                <footer>Park, Public Transit, Schools</footer>
+                            </blockquote>
+                        </div>
+                        <div class="col-md-4">
+                            <blockquote>
+                                <p>
+                                    <h6>Total Parking Spaces</h6> </p>
+                                <footer>4</footer>
+                            </blockquote>
+                        </div>
+                        <div class="col-md-4">
+                            <blockquote>
+                                <p>
+                                    <h6>Bedrooms</h6></p>
+                                <footer>3</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-</div>
-
-        <div class="carousel slide" id="screenshot-carousel" data-ride="carousel" style="width: 50%; margin-left: 10px" >
-          <ol class="carousel-indicators">
-            <li data-target="#screenshot-carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#screenshot-carousel" data-slide-to="1"></li>
-            <li data-target="#screenshot-carousel" data-slide-to="2"></li>
-            <li data-target="#screenshot-carousel" data-slide-to="3"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="item active">
-              <img src="<%= home.photopaths[0] %>" width="550px" height="400px" alt="Text of the image">
-              <div class="carousel-caption">
-                <h3>River heading</h3>
-                <p>This is the caption</p>
-              </div>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse2">+ Features</a>
+      </h4>
             </div>
-            <div class="item">
-              <img src="<%= home.photopaths[1] %>" width="550px" height="400px" alt="Text of the image">
-              <div class="carousel-caption">
-                <h3>Street heading</h3>
-                <p>This is the caption</p>
-              </div>
-            </div>
-            <div class="item">
-              <img src="http://www.nps.gov/anti/planyourvisit/images/Pry-House.jpg" alt="Text of the image">
-              <div class="carousel-caption">
-                <h3>Painting heading</h3>
-                <p>This is the caption</p>
-              </div>
-            </div>
-
-          </div><!-- End Carousel inner -->
-          <a href="#screenshot-carousel" class="left carousel-control" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-          </a>
-          <a href="#screenshot-carousel" class="right carousel-control" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-          </a>
-        </div><!-- End Carousel -->
-   </div> </section>
-  </div>
-<br>
-
-
-
-
-  <div class="col-md-6">
-  <div class="jumbotron">Details</div>
-        
-  <div class="jumbotron" >
-   <div class="row">
-
-          <div class="col-md-4">
-          <blockquote>
-             <p><h6>Amenities Nearby</p>
-              <footer>Park, Public Transit, Schools</footer>
-          </h6> </blockquote>
-          </div>
-
-          <div class="col-md-4">
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
             <blockquote>
-              <p><h6>Total Parking Spaces</p>
-              <footer>4</footer>
-           </h6> </blockquote>
-          </div>
-
-          <div class="col-md-4">
-            <blockquote>
-              <p><h6>Bedrooms</p>
-              <br><footer>3</footer>
-           </h6> </blockquote> 
-         </div>
-
-   </div>
-  </div>
-  
- 
- 
-    
-  <div class="jumbotron">Buildings</div>
-      
-     <div class="jumbotron" >
-     <div class="row">
-
-          <div class="col-md-6">
-            <blockquote>
-              <p><h6>Style</p>
+              <p><h6>Style</h6></p>
               <footer>Detached</footer>
-            <br><p><h6>Basement Type</p>
+            <br><p><h6>Basement Type</h6></p>
               <footer>Full (finished)</footer>
              
             </blockquote>
@@ -177,25 +152,28 @@
 
           <div class="col-md-6">
             <blockquote>
-               <br><p><h6>Cooling</p>
+               <p><h6>Cooling</h6></p>
               <footer>Central Air Conditioning</footer>
-              <br><p><h6>Heating </p>
+              <br><p><h6>Heating</h6> </p>
               <footer>Natural Gas</footer>
             </blockquote>
           </div>
-
-
-       </div></div>
-    
-      
-      
-   
-  <div class="jumbotron">Rooms</div>
-        
-   <div class="jumbotron"> 
-    <div class="row">
-
-          <div class="col-md-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse3">+ Room Dimensions</a>
+      </h4>
+            </div>
+            <div id="collapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
             <blockquote>
               <p><h6>Level</p>
               <footer>Second Level</footer>
@@ -206,7 +184,7 @@
 
           <div class="col-md-4">
             <blockquote>
-              <p><h6>Type</p>
+              <p><h6>Type<h6></p>
               <footer>Master Bedroom</footer>
               <footer>Bedroom 2</footer>
               <footer>Bedroom 3</footer>
@@ -220,7 +198,7 @@
 
           <div class="col-md-4">
             <blockquote>
-              <p><h6>Dimensions</p>
+              <p><h6>Dimensions<h6></p>
               <footer>3.96 m x 3.5 m</footer>
               <footer>3.96 m x 3.5 m</footer>
               <footer>3.05 m x 2.9 m</footer>
@@ -230,24 +208,94 @@
               <footer>3.5 m x 3.38 m</footer>
               <footer>9.75 m x 5.18 m</footer>
             </blockquote></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-          </div></div>
-        </div><!-- End row -->
- <div class="col-md-12">
-        <%if (user== "ADMIN") { %>
+</div>
+
+</div>
+<div class="col-md-4">
+  <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed/v1/place?q=<%= home.address %>
+      &zoom=15
+      &key=AIzaSyCKhfyQAD8hLWF1GSsTB5E3WzcL2ppBEKs"></iframe>
+
+
+     <div class="jumbotron bidding">
+    <h5 align="center">CONTACT AGENT</h5>
+    <div class="text-center vd_info-parent"> <img src="/<%= agent.photopath %>" name="aboutme" width="140" height="140" class="img-circle">
+        <p><%= agent.firstName %> <%= agent.lastName %></p>
+    </div>
+    <h5><div class="mgtp-20">
+                     
+    <table class="table table-striped table-hover">
+        <tbody>
+            <tr>
+                <td>User Rating</td>
+                <td><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i><i class="glyphicon glyphicon-star"></i></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+</h5>
+
+</div>
+
+<div class="jumbotron bidding">
+        <script>
+function validateForm() {
+    var x = document.forms["homebid"]["bidvalue"].value;
+    var highestBid = <%= home.highestbidvalue %>;
+    if (x <= highestBid || x == "") {
+        alert("Not a Higher Bid!!");
+        return false;
+    }
+}
+</script>
+       
+
+ <form name="homebid" class="form-horizontal" role="form" onsubmit="return validateForm()" method="post" action="/homes/<%= home._id %>/bid">
+    <div class="form-group">
+      
+        <label for="Bid" class="col-sm-2 control-label"></label>
+        
+             <h2 align="center">$<%= home.highestbidvalue %></h2>
+                  <h5>Highest Bid</h5>
+           
+        
+
+ 
+       <input type="text" class="form-control" id="bidvalue" name="bidvalue" placeholder="Enter Your Bid" value="">
+
+         <div class="col-sm-10 col-sm-offset-2">
+        <h5>  <input id="submit" name="submit" type="submit" value="BID" class="btn btn-primary"> </h5>
+      </div> 
+      </div></form></div>
+
+      <%if (user.username== "ADMIN") { %>
 <div class="jumbotron" id="rooms">
-  <h2>This house is <%= home.publicTrue %></h2>
-  <form action = "/admin/verify/<%= home._id %>" method = "post">
-        <input type="submit" name="verified" value="true">
-        <input type="submit" name="verified" value="false" />
+  <h2>This house is <%= home.publicTrue%></h2>
+  <form action = "/admin/verify/<%= home._id%>/true" method = "post">
+        <input type="submit" name="setTrue" value="setTrue" />
+  </form>
+   <form action = "/admin/verify/<%= home._id%>/false" method = "post">
+        <input type="submit" name="setFalse" value="setFalse" />
   </form>
 
 </div>
-</div>
 
 <% } %>
-</body>
+</div>
+
+</div>
+
+</div>
 
 
-</html>
+<% include footer.ejs %>
 
+       

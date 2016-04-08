@@ -19,7 +19,7 @@ module.exports = mongoose.model('Home',{
 	bidding: Boolean,
 	loc: {
     type: [Number],  // [<longitude>, <latitude>]
-    index: '2d'      // create the geospatial index
+    index: '2dsphere'      // create the geospatial index
     },
 	// bedrooms: [{
 	// 	type: String,

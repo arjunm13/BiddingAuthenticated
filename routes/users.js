@@ -10,7 +10,7 @@ var isAuthenticated = function(req, res, next) {
     // if user is authenticated in the session, call the next() to call the next request handler 
     // Passport adds this method to request object. A middleware is allowed to add properties to
     // request and response objects
-    if (req.isAuthenticated())
+    if (res.locals.login = req.isAuthenticated())
         return next();
     // if the user is not authenticated then redirect him to the login page
     res.redirect("/users/loginPage");
@@ -68,13 +68,13 @@ module.exports = function(passport) {
     });
 
     /* Handle Logout */
-    router.get('/newagent', function(req, res) {
+    router.get('/newagent', isAuthenticated,function(req, res) {
         res.render('createprof');
     });
 
 
     /* Handle Logout */
-    router.get('/showagent/:id', function(req, res) {
+    router.get('/showagent/:id', isAuthenticated,function(req, res) {
 
         var agentid = req.params.id;
         console.log(agentid);
@@ -113,7 +113,7 @@ module.exports = function(passport) {
     });
 
     /* GET login page. */
-router.get('/agentlist', function(req, res) {
+router.get('/agentlist', isAuthenticated,function(req, res) {
 
     User.find({
         "userType": "Real Estate Agent" 

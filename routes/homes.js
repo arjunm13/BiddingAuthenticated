@@ -39,7 +39,7 @@ var isAuthenticated = function(req, res, next) {
     // if user is authenticated in the session, call the next() to call the next request handler 
     // Passport adds this method to request object. A middleware is allowed to add properties to
     // request and response objects
-    if (req.isAuthenticated())
+    if (res.locals.login = req.isAuthenticated())
         return next();
     // if the user is not authenticated then redirect him to the login page
     // res.render('loginError');
@@ -148,7 +148,7 @@ router.post('/new', isAuthenticated, function(req, res) {
                 newHome.bidding = req.body.BiddingActive;
                 newHome.bids.bidvalue = 0;
                 newHome.bids.userid = '000';
-                newHome.highestbidid = '000';
+                newHome.highestbidid = req.body.price;
                 newHome.publicTrue = false;
                 newHome.loc = [lg, lt];
                 // newHome.photopaths = req.param('userPhoto');
@@ -234,7 +234,7 @@ router.post('/new', isAuthenticated, function(req, res) {
 });
 
 /* GET login page. */
-router.get('/homelist', function(req, res) {
+router.get('/homelist', isAuthenticated,function(req, res) {
 
     Home.find({
         "publicTrue": true
@@ -253,7 +253,7 @@ router.get('/homelist', function(req, res) {
 });
 
 /* GET login page. */
-router.get('/search', function(req, res) {
+router.get('/search', isAuthenticated,function(req, res) {
 
     var area = req.param('searcharea');
     var homeType = req.param('homeType');
@@ -264,7 +264,7 @@ router.get('/search', function(req, res) {
     var numOfBathrooms = req.param('numOfBathrooms');
     var sqft = req.param('squareFoot');;
     var bidding = req.param('BiddingActive');
-    var maxDistance = req.param('maxDistance')*100;
+    var maxDistance = req.param('maxDistance');
 
 
     console.log(area);
@@ -294,13 +294,18 @@ router.get('/search', function(req, res) {
 
             // we need to convert the distance to radians
             // the raduis of Earth is approximately 6371 kilometers
-            maxDistance /= 6371;
+            console.log("Max:" + maxDistance);
+            maxDistance /= 6378.1;
+            maxDistance *= 100;
+
+            
+            console.log("Max:" + maxDistance);//maxDistance /= 10;
 
             // get coordinates [ <longitude> , <latitude> ]
 
             if (result.length == 0 | result == undefined) {
                 var coords = [0, 0];
-                maxDistance = maxDistance * 1000;
+                maxDistance = maxDistance * 100;
             } else {
                 console.log(result);
                 var coords = [];
@@ -315,6 +320,7 @@ router.get('/search', function(req, res) {
                 loc: {
                     $near: coords,
                     $maxDistance: maxDistance
+
                 },
                 squareFoot: {
                     $gt: sqft - 1
@@ -352,9 +358,13 @@ router.get('/search', function(req, res) {
                     homeMap.push(home);
                 });
 
-
-                res.render('homelist', {
-                    homes: homeMap
+                maxDistance*=63710;
+                console.log(maxDistance);
+                res.render('homelistresults', {
+                    homes: homeMap,
+                    radius: maxDistance,
+                    longitude: coords[0],
+                    latitude: coords[1]
                 });
 
 
@@ -397,19 +407,30 @@ router.get('/show/:id', isAuthenticated, function(req, res) {
         if (err) {
             console.log(err.status);
         } else {
-            res.render('property', {
-                user: req.user.username,
-                home: homes
+            agentQuery = {
+                "_id" : ObjectId(homes.userid)
+            }
+            User.findById(agentQuery, function(err, agent){
+                res.render('property', {
+                agent: agent,
+                home: homes,
+                user: req.user
             });
+
+            });
+            
         }
     });
 });
 
-router.post('/show/:homeid/bid', function(req, res) {
+router.post('/:homeid/bid', function(req, res) {
 
     var homeid = req.params.homeid;
     var bidv = req.param('bidvalue');
     var url = '/homes/show/' + homeid;
+   
+    bidv=bidv.replace(/\,/g,''); // 1125, but a string, so convert it to number
+    bidv=parseInt(bidv,10);
     console.log(homeid);
     console.log(bidv);
 
