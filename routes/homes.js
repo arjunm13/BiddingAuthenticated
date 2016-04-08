@@ -148,7 +148,7 @@ router.post('/new', isAuthenticated, function(req, res) {
                 newHome.bidding = req.body.BiddingActive;
                 newHome.bids.bidvalue = 0;
                 newHome.bids.userid = '000';
-                newHome.highestbidid = req.body.price;
+                newHome.highestbidvalue = req.body.price;
                 newHome.publicTrue = false;
                 newHome.loc = [lg, lt];
                 // newHome.photopaths = req.param('userPhoto');

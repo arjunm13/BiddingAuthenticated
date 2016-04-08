@@ -50,137 +50,181 @@
                 
                 <!-- panel widget --> 
               </div>
-              <div class="col-sm-9">
-                <div class="tabs widget" >
-  <ul class="nav nav-tabs widget">
-    <li class="active"> <a data-toggle="tab" href="#profile-tab"> Profile <span class="menu-active"><i class="fa fa-caret-up"></i></span> </a></li>  
-    
-  </ul>
-  <div class="tab-content" background-color="#1fae66">
-    <div id="profile-tab" class="tab-pane active">
-      <div class="pd-20">
-<div class="vd_info tr"> <a class="btn vd_btn btn-xs vd_bg-yellow"> <i class="fa fa-pencil append-icon"></i> Edit </a> </div>      
-        <h3 class="mgbt-xs-15 mgtp-10 font-semibold"><i class="icon-user mgr-10 profile-icon"></i> ABOUT</h3>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="row mgbt-xs-0">
-              <label class="col-xs-5 control-label">First Name:</label>
-              <div class="col-xs-7 controls"><%= user.firstName %></div>
-              <!-- col-sm-10 --> 
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="row mgbt-xs-0">
-              <label class="col-xs-5 control-label">Last Name:</label>
-              <div class="col-xs-7 controls"><%= user.lastName %></div>
-              <!-- col-sm-10 --> 
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="row mgbt-xs-0">
-              <label class="col-xs-5 control-label">User Name:</label>
-              <div class="col-xs-7 controls"><%= user.username %></div>
-              <!-- col-sm-10 --> 
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="row mgbt-xs-0">
-              <label class="col-xs-5 control-label">Email:</label>
-              <div class="col-xs-7 controls"><%= user.email %></div>
-              <!-- col-sm-10 --> 
-            </div>
-          </div>
-           <div class="col-sm-6">
-            <div class="row mgbt-xs-0">
-              <label class="col-xs-5 control-label">Address:</label>
-              <div class="col-xs-7 controls">105 Rollingwood Drive</div>
-              <!-- col-sm-10 --> 
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="row mgbt-xs-0">
-              <label class="col-xs-5 control-label">Country:</label>
-              <div class="col-xs-7 controls">Canada</div>
-              <!-- col-sm-10 --> 
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="row mgbt-xs-0">
-              <label class="col-xs-5 control-label">City:</label>
-              <div class="col-xs-7 controls">Brampton</div>
-         
-              <!-- col-sm-10 --> 
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="row mgbt-xs-0">
-              <label class="col-xs-5 control-label">Phone:</label>
-              <div class="col-xs-7 controls">647-219-1326</div>
-              <!-- col-sm-10 --> 
-            </div>
-          </div>
-        </div>
-        <hr class="pd-10">
-        <div class="row">
-          <div class="col-sm-7 mgbt-xs-20">
-            <h3 class="mgbt-xs-15 font-semibold"><i class="fa fa-file-text-o mgr-10 profile-icon"></i> WORK EXPERIENCE</h3>
-            <div class="content-list content-menu">
-              <ul class="list-wrapper">
-                <li class="mgbt-xs-10"> <span class="menu-icon vd_green"><i class="fa  fa-circle-o"></i></span> <span class="menu-text">Sales Engineer at Johnson Controls<span class="menu-info"><span class="menu-date"> - (November 2015 ~ Now)</span></span> </span> </li>
-                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text">Intern at Johnson Controls<span class="menu-info"><span class="menu-date"> - (June 2015 ~ August 2015)</span></span> </span> </li>
-                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text">Dispatch Operator at Trillium Hospital<span class="menu-info"><span class="menu-date"> - (May 2014 ~ August 2014)</span></span> </span> </li>
-                <li class="mgbt-xs-10"> <span class="menu-icon vd_grey"><i class=" fa  fa-circle-o"></i></span> <span class="menu-text">Sales at Sales Company Ltd<span class="menu-info"><span class="menu-date"> - (March 2009 ~ February 2010)</span></span> </span> </li>
-              </ul>
-            </div>
-          </div>
-        
-        </div>
-        <!-- row -->
-        <hr class="pd-6">
-        <div class="row">
-    <div class="col-sm-6">
-<!--   <div class="container">
-  <div class="row" style="margin-top:40px;"> -->
-   <!--  <div class="col-md-5">
- -->     
-        
-            <div class="row" id="post-review-box" style="display:none;">
-                <div class="col-md-12">
-                    <form accept-charset="UTF-8" action="/review" method="get">
-                        <input id="ratings-hidden" name="rating" type="hidden"> 
-                        <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
-        
-                        <div class="text-right">
-                            <div class="stars starrr" data-rating="0"></div>
-                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
-                            <span class="glyphicon glyphicon-remove"></span>Cancel</a>
-                            <button class="btn btn-success btn-lg" type="submit">Save</button>
+             <div class="col-sm-9">
+    <div class="tabs widget">
+        <ul class="nav nav-tabs widget">
+            <li class="active"> <a data-toggle="tab" href="#profile-tab"> Profile <span class="menu-active"><i class="fa fa-caret-up"></i></span> </a></li>
+            <%if (user.username== locals.username) { %>
+            <li > <a data-toggle="tab" href="#edit-tab"> Edit <span class="menu-active"><i class="fa fa-caret-up"></i></span> </a></li>
+            <% } %>
+        </ul>
+        <div class="tab-content" background-color="#1fae66">
+            <div id="profile-tab" class="tab-pane active">
+                <div class="pd-20">
+                    <div class="vd_info tr">
+                      <%if (user.username== locals.username) { %>
+                        <a href="/users/signout" class="btn vd_btn btn-xs vd_bg-yellow"> <i class="fa fa-pencil append-icon"></i> Log Out </a>
+                         <% } %>
+                    </div>
+                    <h3 class="mgbt-xs-15 mgtp-10 font-semibold"><i class="icon-user mgr-10 profile-icon"></i> ABOUT</h3>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">First Name:</label>
+                                <div class="col-xs-7 controls">
+                                    <%= user.firstName %>
+                                </div>
+                                <!-- col-sm-10 -->
+                            </div>
                         </div>
-                    </form>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">Last Name:</label>
+                                <div class="col-xs-7 controls">
+                                    <%= user.lastName %>
+                                </div>
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">User Name:</label>
+                                <div class="col-xs-7 controls">
+                                    <%= user.username %>
+                                </div>
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">Email:</label>
+                                <div class="col-xs-7 controls">
+                                    <%= user.email %>
+                                </div>
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">Address:</label>
+                                <div class="col-xs-7 controls">105 Rollingwood Drive</div>
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">Country:</label>
+                                <div class="col-xs-7 controls">Canada</div>
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">City:</label>
+                                <div class="col-xs-7 controls">Brampton</div>
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">Phone:</label>
+                                <div class="col-xs-7 controls">647-219-1326</div>
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-<!--             </div>
-        </div> 
-         
-    </div>-->
-  </div>
-</div>
-          </div> 
-          <!-- col-sm-7 --> 
-          
-          <!-- col-sm-7 -->           
+                <!-- row -->
+            </div>
+            <div id="edit-tab" class="tab-pane">
+                <div class="pd-20">
+                  
+                    <h3 class="mgbt-xs-15 mgtp-10 font-semibold"><i class="icon-user mgr-10 profile-icon"></i> ABOUT</h3>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">First Name:<div class="form-group">
+                                <input type="text" class="form-control" name="website">
+                                </div></label>
+                               
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">Last Name:<div class="form-group">
+                                <input type="text" class="form-control" name="website">
+                                </div></label>
+                                
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">User Name:<div class="form-group">
+                                <input type="text" class="form-control" name="website">
+                                </div></label>
+                               
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">Email:<div class="form-group">
+                                <input type="text" class="form-control" name="website">
+                                </div></label>
+                               
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">Address:<div class="form-group">
+                                <input type="text" class="form-control" name="website">
+                                </div></label>
+                                
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">Country:<div class="form-group">
+                                <input type="text" class="form-control" name="website">
+                                </div></label>
+                                
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">City:<div class="form-group">
+                                <input type="text" class="form-control" name="website">
+                                </div></label>
+                                
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mgbt-xs-0">
+                                <label class="col-xs-5 control-label">Phone:<div class="form-group">
+                                <input type="text" class="form-control" name="website">
+                                </div></label>
+                                
+                                <!-- col-sm-10 -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- row -->
+            </div>
+            <!-- pd-20 -->
         </div>
-        <!-- row --> 
-      </div>
-      <!-- pd-20 --> 
+        <!-- home-tab -->
     </div>
-    <!-- home-tab -->
- 
-        
-      </div>
-      <!-- pd-20 -->       
-   
-    
-  </div>
+    <!-- pd-20 -->
+</div>
   <!-- tab-content --> 
 </div>
 

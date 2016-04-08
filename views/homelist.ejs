@@ -20,7 +20,7 @@
           <h2><%= home.homeType %></h2>
 
           <p><img src="/img/Blueprint.png" height="24px" width="24px" text-align="left"/> <%= home.squareFoot%>  | <img src="/img/Bed.png" height="24" width="24"/> <%= home.bathrooms%> ba | <img src="/img/Bathtub.png" height="24" width="24"/> <%= home.bedrooms%> bdr</p>
-          <a><h4 href="#myModal<%= home._id %>"><img src="/img/Directions.png" height="24px" width="24px" text-align="left" data-toggle="modal" data-target="#myModal<%= home._id %>"/> <%= home.region%></h4></a>
+          <a><h4 data-toggle="modal" data-target="#myModal<%= home._id %>"><img src="/img/Directions.png" height="24px" width="24px" text-align="left" /> <%= home.region%></h4></a>
           <h4><img src="/img/forSale.png" height="35px" width="35px" text-align="left"/> $<%= home.price %></h4>
           <a href="/homes/show/<%= home._id %>" class="btn btn-primary" title="See more">  More Info »</a>
         </div>

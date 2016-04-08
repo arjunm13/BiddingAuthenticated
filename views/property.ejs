@@ -227,7 +227,7 @@
      <div class="jumbotron bidding">
     <h5 align="center">CONTACT AGENT</h5>
     <div class="text-center vd_info-parent"> <img src="/<%= agent.photopath %>" name="aboutme" width="140" height="140" class="img-circle">
-        <p><%= agent.firstName %> <%= agent.lastName %></p>
+        <a href="/users/showagent/<%= agent._id %>"><p><%= agent.firstName %> <%= agent.lastName %></p></a>
     </div>
     <h5><div class="mgtp-20">
                      
@@ -239,8 +239,15 @@
             </tr>
         </tbody>
     </table>
+    <div class="container">
+
+    <br>
+ 
 
 </div>
+
+
+    </div>
 </h5>
 
 </div>
