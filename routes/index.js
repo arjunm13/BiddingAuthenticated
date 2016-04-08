@@ -172,6 +172,7 @@ router.get('/test', function(req, res) {
 router.post('/uploadphoto', isAuthenticated ,function(req,res){
         upload(req,res,function(err){
             if(err){
+                console.log(err.status);
                 return res.send(err.status);
             }
             var extension = req.user._id;
