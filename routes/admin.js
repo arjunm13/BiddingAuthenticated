@@ -49,7 +49,7 @@ router.get('/', isAuthenticated, function(req, res) {
 
 });
 
-router.get('/verify/:homeid/:verified', isAuthenticated, function(req, res) {
+router.post('/verify/:homeid/:verified', isAuthenticated, function(req, res) {
 
         var homeid = req.params.homeid;
         var verified = req.params.verified;

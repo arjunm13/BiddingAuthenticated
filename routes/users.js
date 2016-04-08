@@ -68,7 +68,7 @@ module.exports = function(passport) {
     });
 
     /* Handle Logout */
-    router.get('/newagent', isAuthenticated,function(req, res) {
+    router.get('/newagent', function(req, res) {
         res.render('createprof');
     });
 
