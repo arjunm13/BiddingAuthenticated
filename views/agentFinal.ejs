@@ -29,6 +29,36 @@
                           </tr>
                         </tbody>
                       </table>
+                            <script>
+  $(document).ready(function() {
+
+     $('#uploadForm').submit(function() {
+     $("#status").empty().text("File is uploading...");
+
+        $(this).ajaxSubmit({
+
+            error: function(xhr) {
+                status('Error: ' + xhr.status);
+            },
+
+            success: function(response) {
+          console.log(response)
+          $("#status").empty().text(response);
+            }
+  });
+
+  return false;
+    });    
+});
+  </script>
+                <form id="uploadForm"
+          enctype="multipart/form-data"
+          action="/uploadphoto"
+          method="post">
+      <input type="file" name="userPhoto" />
+      <input type="submit" value="Upload Image" name="submit">
+      <span id = "status"></span>
+    </form>
                     </div>
                   </div>
                 </div>
