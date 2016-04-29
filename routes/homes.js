@@ -62,8 +62,8 @@ var sendMail = function(homeID) {
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'arjunmahen13@gmail.com', // Your email id
-            pass: '1234Soccer' // Your password
+            user: 'asdh@gmail.com', // Your email id
+            pass: 'asda' // Your password
         }
     });
     transporter.sendMail(mailOptions, function(error, info) {
