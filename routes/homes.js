@@ -63,7 +63,7 @@ var sendMail = function(homeID) {
         service: 'Gmail',
         auth: {
             user: 'arjunmahen13@gmail.com', // Your email id
-            pass: 1234Soccer
+            pass: '1234Soccer'
         }
     });
     transporter.sendMail(mailOptions, function(error, info) {
