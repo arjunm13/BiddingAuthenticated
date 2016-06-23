@@ -61,25 +61,23 @@ function handleSayHello(req, res, homeID) {
         service: 'Gmail',
         auth: {
             user: 'arjunmahen13@gmail.com', // Your email id
-            pass: '1234Soccer' // Your password
+            pass: 'XXXXX' // Your password
         }
     });
     transporter.sendMail(mailOptions, function(error, info){
         console.log("done here 2");
     if(error){
-        console.log("done here 3");
-        console.log(error);
+        
         res.json({yo: 'error'});
     }else{
-        console.log("done here 4");
-        console.log('Message sent: ' + info.response);
+        
         res.json({yo: info.response});
     };
 });
     console.log("done here 1");
     };
 
-var text = 'Hey, you are nice';
+var text = 'Hey,';
 
 var mailOptions = {
     from: 'arjunmahen13@gmail.com', // sender address
@@ -100,56 +98,11 @@ router.get('/sayHello', handleSayHello, function(req, res) {
 
 
 /* GET login page. */
-router.get('/', isAuthenticated,function(req, res) {
+router.get('/',function(req, res) {
     // Display the Login page with any flash message, if any
     res.redirect('/homes/homelist');
 });
-/* GET login page. */
-router.get('/bootleg', function(req, res) {
-    // Display the Login page with any flash message, if any
-    res.render('testBoot');
-});
-/* GET login page. */
-router.get('/s2', function(req, res) {
-    // Display the Login page with any flash message, if any
-    res.render('signup2');
-});
-/* GET login page. */
-router.get('/userProfile', function(req, res) {
-    // Display the Login page with any flash message, if any
-    res.render('userProfile');
-});
-/* GET login page. */
-router.get('/userPage', function(req, res) {
-    // Display the Login page with any flash message, if any
-    res.render('userPage');
-});
-/* GET login page. */
-router.get('/multi', function(req, res) {
-    // Display the Login page with any flash message, if any
-    res.render('multiUpload');
-});
 
-/* GET login page. */
-router.get('/listTest', function(req, res) {
-    // Display the Login page with any flash message, if any
-    res.render('listTest');
-});
-
-/* GET login page. */
-router.get('/test2', isAuthenticated, function(req, res) {
-    // Display the Login page with any flash message, if any
-    res.render('users', {
-        message: req.flash('message')
-    });
-});
-
-router.get('/checklogin',function(req,res){
-  if (req.user)
-    res.send(true);
-  else
-    res.send(false);
-});
 
 
 router.get('/test', function(req, res) {
@@ -167,7 +120,7 @@ router.get('/test', function(req, res) {
 
     });
 
-});
+})
 
 router.post('/uploadphoto', isAuthenticated ,function(req,res){
         upload(req,res,function(err){
