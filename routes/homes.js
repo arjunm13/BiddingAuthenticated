@@ -63,7 +63,7 @@ var sendMail = function(homeID) {
         service: 'Gmail',
         auth: {
             user: 'arjunmahen13@gmail.com', // Your email id
-            pass: '1234Soccer'
+            pass: 'XXXXX'
         }
     });
     transporter.sendMail(mailOptions, function(error, info) {
@@ -266,16 +266,6 @@ router.get('/search', function(req, res) {
     var bidding = req.param('BiddingActive');
     var maxDistance = req.param('maxDistance');
 
-
-    console.log(area);
-    console.log(homeType);
-    console.log(saleRent);
-    console.log(greaterThanPrice);
-    console.log(lessThanPrice);
-    console.log(numOfBedrooms);
-    console.log(numOfBathrooms);
-    console.log(sqft);
-    console.log(bidding);
 
     geocoder.geocode(area, function(err, result) {
 
