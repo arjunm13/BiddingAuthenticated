@@ -253,7 +253,7 @@ router.get('/homelist',function(req, res) {
 });
 
 /* GET login page. */
-router.get('/search', isAuthenticated,function(req, res) {
+router.get('/search', function(req, res) {
 
     var area = req.param('searcharea');
     var homeType = req.param('homeType');
