@@ -253,7 +253,7 @@ router.get('/homelist',function(req, res) {
 });
 
 /* GET login page. */
-router.get('/search',function(req, res) {
+router.get('/search', isAuthenticated,function(req, res) {
 
     var area = req.param('searcharea');
     var homeType = req.param('homeType');
@@ -395,7 +395,7 @@ router.get('/search',function(req, res) {
 //     });
 // });
 
-router.get('/show/:id', function(req, res) {
+router.get('/show/:id', isAuthenticated, function(req, res) {
 
     var homeid = req.params.id;
     console.log(homeid);
