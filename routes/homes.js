@@ -67,13 +67,12 @@ var sendMail = function(homeID) {
         }
     });
     transporter.sendMail(mailOptions, function(error, info) {
-        console.log("done here 2");
+        
         if (error) {
-            console.log("done here 3");
+           
             console.log(error);
             res.json({ yo: 'error' });
         } else {
-            console.log("done here 4");
             console.log('Message sent: ' + info.response);
         };
     });
@@ -113,15 +112,6 @@ router.post('/new', isAuthenticated, function(req, res) {
                 geocodedresult = result;
 
 
-                console.log(" DEBUGGERRRRR: req.files");
-                console.log(util.inspect(req.files, { showHidden: false, depth: null }));
-                console.log(" DEBUGGERRRRR rreq.file");
-                console.log(util.inspect(req.file, { showHidden: false, depth: null }));
-                console.log(" DEBUGGERRRRR req.file and req.files");
-
-                console.log("3: " + req.files);
-
-                console.log("4: " + req);
 
                 console.log(geocodedresult[0].longitude);
                 var output = geocodedresult[0].latitude;
@@ -368,22 +358,6 @@ router.get('/search', function(req, res) {
     });
 
 });
-
-
-
-//     Home.find({}, function(err, homes) {
-//         var homeMap = [];
-
-//         homes.forEach(function(home) {
-//             homeMap.push(home);
-//         });
-
-//         res.render('homelist', {
-//             homes: homeMap
-//         });
-
-//     });
-// });
 
 router.get('/show/:id', isAuthenticated, function(req, res) {
 
